@@ -1,0 +1,52 @@
+{
+  "name": "gulp-start-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp dev --env=dev",
+    "prod": "gulp build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
+    "bootstrap-4-grid": "^3.4.0",
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^6.2.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-jsbeautifier": "^3.0.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglifyes": "^0.2.1",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^5.0.1",
+    "i": "^0.3.6",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-pngquant": "^8.0.0",
+    "npm": "^6.14.6",
+    "object-fit-images": "^3.2.4",
+    "pngquant-bin": "^6.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "svg4everybody": "^2.1.9",
+    "parsleyjs": "^2.9.2",
+    "jquery-mask-plugin": "^1.14.16",
+    "parallax-js": "^3.1.0",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^6.0.2",
+    "normalize.css": "^8.0.1"
+  }
+}

@@ -1,0 +1,7 @@
+/.git/
+/build/
+/node_modules/
+/**/Thumbs.db
+/**/*.DS_Store
+.idea
+*.docx
