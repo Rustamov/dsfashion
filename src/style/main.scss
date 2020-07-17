@@ -2,9 +2,10 @@
 @import '_fonts';
 @import '_varaibles';
 @import '_mixins';
+@import '_sprite';
 @import '_ui';
 
-
+@include sprites($spritesheet-sprites); //if icons empty will throw error
 
 
 body {
@@ -15,13 +16,3 @@ body {
   color: #000000;
   background: #fff;
 }
-
-
-
-
-
-
-
-
-
-@import '_media';

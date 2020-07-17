@@ -18,7 +18,17 @@ var gulp = require('gulp'),
     cleanCSS = require('gulp-clean-css'),
     pug = require('gulp-pug'),
     beautify = require('gulp-jsbeautifier'),
-    env = gutil.env.env;
+    env = gutil.env.env,
+    del = require('del'),
+    //for svg sprite
+    svgSprite = require('gulp-svg-sprite'),
+    svgmin = require('gulp-svgmin'),
+    cheerio = require('gulp-cheerio'),
+    replace = require('gulp-replace'),
+    //for png sprite
+    buffer = require('vinyl-buffer'),
+    merge = require('merge-stream'),
+    spritesmith = require('gulp.spritesmith');
 
 console.log(env);
 
@@ -28,6 +38,8 @@ var path = {
         js: 'build/js/',
         css: 'build/css/',
         img: 'build/img/',
+        svgSprite: 'build/img/sprite/',
+        pngSprite: 'build/img/sprite/',
         root: 'build/',
     },
     
@@ -54,7 +66,13 @@ var path = {
             'src/js/main.js',
         ],
         style: 'src/style/**/*.scss',
-        img: 'src/img/**/*.*',
+        img: [
+            'src/img/**/*.{gif,png,jpg,svg,webp}',
+            '!src/img/sprite/**/*'
+        ],
+        svgSprite: 'src/img/sprite/svg/*.svg',
+        pngSprite: 'src/img/sprite/png/*.png',
+
         root: 'src/root/**/*.*',
     },
 
@@ -63,6 +81,8 @@ var path = {
         js: 'src/js/**/*.js',
         style: 'src/style/**/*.scss',
         img: 'src/img/**/*.*',
+        svgSprite: 'src/img/sprite/svg/*.svg',
+        pngSprite: 'src/img/sprite/png/*.png',
         root: 'src/root/**/*.*',
     },
 
@@ -79,7 +99,7 @@ var config = {
     logPrefix: ""
 };
 
-gulp.task('templates:build', function buildHTML() {
+gulp.task('templates', function () {
     return gulp.src(path.src.pug)
     .pipe(pug({
         // pretty: true
@@ -102,7 +122,7 @@ gulp.task('templates:build', function buildHTML() {
 
 });
 
-gulp.task('js:build', function () {
+gulp.task('js', function () {
     return gulp.src(path.src.js) //Найдем наш main файл
         .pipe(concat('scripts.js'))
         .pipe(gulpIf(env !== 'dev',uglify()))//Сожмем наш js
@@ -111,7 +131,7 @@ gulp.task('js:build', function () {
         .pipe(reload({stream: true})); //И перезагрузим сервер
 });
 
-gulp.task('style:build', function () {
+gulp.task('style', function () {
     return gulp.src(path.src.style) //Выберем наш main.scss
         .pipe(gulpIf(env == 'dev', sourcemaps.init()))
         .pipe(sass()) //Скомпилируем
@@ -128,7 +148,7 @@ gulp.task('style:build', function () {
         .pipe(reload({stream: true}));
 });
 
-gulp.task('image:build', function () {
+gulp.task('image', function () {
     return gulp.src(path.src.img) //Выберем наши картинки
         .pipe(imagemin([
             imagemin.gifsicle({interlaced: true}),
@@ -145,27 +165,88 @@ gulp.task('image:build', function () {
         .pipe(reload({stream: true}));
 });
 
+gulp.task('svgSprite', function () {
+    return gulp.src(path.src.svgSprite)
+    .pipe(svgmin({
+      js2svg: {
+        pretty: true
+      }
+    }))
+    .pipe(cheerio({
+      run: function ($) {
+        $('[fill]').removeAttr('fill');
+        $('[stroke]').removeAttr('stroke');
+        $('[style]').removeAttr('style');
+      },
+      parserOptions: {xmlMode: true}
+    }))
+    .pipe(replace('&gt;', '>'))
+    .pipe(svgSprite({
+      mode: {
+        symbol: {
+          sprite: "sprite.svg"
+        }
+      }
+    }))
+    .pipe(gulp.dest(path.build.svgSprite));
+});
 
-gulp.task('root:build', function (done) {
+
+gulp.task('pngSprite', function () {
+    const spriteData = gulp.src(path.src.pngSprite).pipe(spritesmith({
+        imgName: 'sprite.png',
+        imgPath: '../img/sprite/sprite.png',
+        cssName: '_sprite.scss',
+        padding: 5,
+        cssVarMap: function (sprite) {
+          sprite.name = 'icon-' + sprite.name;
+        }
+    }));
+
+    // Оптимизируем спрайт
+    const imgStream = spriteData.img
+        .pipe(buffer())
+        .pipe(imagemin())
+        .pipe(gulp.dest(path.build.pngSprite));
+
+    // Собираем SCSS
+    const cssStream = spriteData.css
+        .pipe(gulp.dest('src/style/'));
+
+    return merge(imgStream, cssStream);
+});
+
+
+
+gulp.task('root', function (done) {
     gulp.src(path.src.root)
         .pipe(gulp.dest(path.build.root))
     done();
 });
 
+gulp.task('clean', function () {
+    return del('build');
+});
+
 gulp.task('build', gulp.series([
-    'templates:build',
-    'style:build',
-    'js:build',
-    'image:build',
-    'root:build'
+    'clean',
+    'templates',
+    'style',
+    'js',
+    'svgSprite',
+    'pngSprite',
+    'image',
+    'root'
 ]));
 
 gulp.task('watch', function () {
-    watch([path.watch.pug], gulp.series('templates:build'));
-    watch([path.watch.style],gulp.series('style:build') );
-    watch([path.watch.js], gulp.series('js:build'));
-    watch([path.watch.img],  gulp.series('image:build'));
-    watch([path.watch.root], gulp.series('root:build'));
+    watch([path.watch.pug], gulp.series('templates'));
+    watch([path.watch.style],gulp.series('style') );
+    watch([path.watch.js], gulp.series('js'));
+    watch([path.watch.img],  gulp.series('image'));
+    watch([path.watch.svgSprite],  gulp.series('svgSprite'));
+    watch([path.watch.pngSprite],  gulp.series('pngSprite'));
+    watch([path.watch.root], gulp.series('root'));
 });
 
 gulp.task('webserver', function () {
