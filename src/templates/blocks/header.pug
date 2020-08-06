@@ -1,2 +1,117 @@
-header.header
-    .container header
+mixin header-nav()
+	+b.NAV.header-nav
+		+e.UL.list
+			+e.LI.item
+				+e.A.link(href="#") О компании
+			+e.LI.item
+				+e.A.link(href="#") Новости
+			+e.LI.item
+				+e.A.link(href="#") Модные тренды
+			+e.LI.item
+				+e.A.link(href="#") Новая коллекция
+			+e.LI.item
+				+e.A.link(href="#") Контакты
+
+mixin header-search()
+	.header-seacrh
+		form(action="/search" autocomplete="off")
+			input.input-text.header-seacrh__input(type="search" name="q" placeholder="Поиск")
+			button.header-seacrh__submit(type="submit")
+				i.header-seacrh__submit-icon
+					+icon('search')
+
+
++b.HEADER.header
+	.container
+		+e.top
+			+e.top-row.row
+				+e.top-col-logo.col-auto
+					+b.A.header-logo
+						+e.inner
+							+e.IMG.img(src="/img/logo.png")
+
+				+e.top-col-hr.col-auto
+					+e.SPAN.top-hr
+				+e.top-col-title.col-auto
+					+b.H1.header-title
+						+e.SPAN.span Ткани 
+						|  для верхней одежды
+
+				+e.top-col-hr.col-auto
+					+e.SPAN.top-hr
+				+e.top-col-email.col-auto
+					+b.header-mail
+						+e.SPAN.text Пишите нам
+						+e.A.link(href="mailto:info@dsfashion.ru") info@dsfashion.ru
+
+				+e.top-col-hr.col-auto
+					+e.SPAN.top-hr
+				+e.top-col-callback.col-auto
+					+b.header-callback
+						//- +e.number
+						+e.A.number(href="tel:+74955553535") + 7 (495) 555-35-35
+						//- +e.popup
+						+e.A.popup.js-popup(href="#popup-callback") Заказать обратный звонок
+
+				+e.top-col-hr.col-auto
+					+e.SPAN.top-hr
+				+e.top-col-last.col-auto
+					+e.top-user-link
+						+user-link
+					+e.top-order-btn
+						+buttonYellow('Оставить заявку').header__order-btn
+
+		+e.nav-line
+			+e.nav-line-row.row
+				+e.nav-line-col-nav.col-auto
+					+header-nav
+
+				+e.nav-line-col-search.col-auto
+					+header-search
+
+				
+				//- +e.nav-line-col-mobile-menu.col-auto
+				//- 	+b.NAV.mobile-menu
+				//- 		+e.content
+				//- 			+e.content-inner
+				//- 				+e.content-container
+				//- 					.container
+				//- 						+e.nav
+				//- 							nav.header-nav
+				//- 								ul.header-nav__list
+				//- 									li.header-nav__item
+				//- 										a.header-nav__link(href="#") О компании
+				//- 									li.header-nav__item
+				//- 										a.header-nav__link(href="#") Клиенты
+				//- 									li.header-nav__item
+				//- 										a.header-nav__link(href="#") Отзывы
+				//- 									li.header-nav__item
+				//- 										a.header-nav__link(href="#") Кейсы
+				//- 									li.header-nav__item
+				//- 										a.header-nav__link(href="#") Цены
+				//- 									li.header-nav__item
+				//- 										a.header-nav__link(href="#") Контакты
+				//- 						+e.numbers
+				//- 							span.header-numbers
+				//- 								span.header-numbers__icon.icon
+				//- 									svg(width="12" height="12")
+				//- 										use(xlink:href="/img/svg/sprite.svg#icon-phone")
+				//- 								span.header-numbers__links
+				//- 									a.header-numbers__link(href="tel:8-123-456-78-90") 8-123-456-78-90
+				//- 									span.header-numbers__second-number
+				//- 										| , 
+				//- 										a.header-numbers__link(href="tel:8-321-654-00-01") 8-321-654-00-01
+				//- 						+e.email
+				//- 							a.header-mail(href="mailto:info@email.ru")
+				//- 								span.header-mail__icon.icon
+				//- 									svg(width="18" height="12")
+				//- 										use(xlink:href="/img/svg/sprite.svg#icon-mail")
+				//- 								span.header-mail__text info@email.ru
+				//- 						+e.button
+				//- 							a.btn.btn--geom-def.btn--theme-red.js-popup(href="#popup-callback") Заказать звонок
+				//- 		+e.BUTTON.trigger.js-mobile-menu-trigger(type="button" name="trigger")
+				//- 			+e.SPAN.trigger-icon
+				//- 				+e.I.trigger-icon-line.--1
+				//- 				+e.I.trigger-icon-line.--2
+				//- 				+e.I.trigger-icon-line.--3
+

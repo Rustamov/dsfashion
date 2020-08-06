@@ -1,5 +1,6 @@
 /.git/
 /build/
+/design/
 /node_modules/
 /**/Thumbs.db
 /**/*.DS_Store

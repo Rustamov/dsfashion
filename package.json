@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@fancyapps/fancybox": "^3.5.7",
+    "bemto.pug": "^2.1.0",
     "bootstrap-4-grid": "^3.4.0",
     "browser-sync": "^2.26.7",
     "del": "^5.1.0",

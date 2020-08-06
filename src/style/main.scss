@@ -5,14 +5,76 @@
 @import '_sprite';
 @import '_ui';
 
+@import '_form';
+@import '_header';
+@import '_footer';
+@import '_catatlog';
+@import '_articles';
+@import '_main-page';
+@import '_breadcrumbs';
+
 @include sprites($spritesheet-sprites); //if icons empty will throw error
 
-
+html {
+  min-height: 100%;
+}
 body {
+  position: relative;
   min-width: 320px;
   font-family: $ffRoboto;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.15;
-  color: #000000;
-  background: #fff;
+  color: #000;
+  background: $color2 linear-gradient(to right, 
+    #7f3e0a 0%,
+    #ad7118 20%,
+    #f2b848 50%,
+    #ad7118 80%,
+    #7f3e0a 100%);
+
+  // background: $color2  url(../img/body-bg.jpg) 50% 50%;
+  // background-size: cover;
+  min-height: 100vh;
+  // overflow-y: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1143px;
+    max-height: 100%;
+    background: url(../img/body-bg-top.png) 50% 0px no-repeat;
+    background-size: 100vw 1143px
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 935px;
+    max-height: 100%;
+    background: url(../img/body-bg-bottom.png) 50% 100% no-repeat;
+    background-size: 100vw 935px
+  }
+
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.container {
+  @include media-breakpoint-up(xl) {
+    max-width: 1170px;
+  }
+}
+
+.main {
+  padding: 100px 0;
 }

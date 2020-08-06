@@ -280,3 +280,32 @@ div {
   @return ($px/$rem) + rem;
 }
 
+/* Пример
+a {
+  @include hover {
+    border: 1px solid red;
+    color: blue;
+  }
+}
+*/
+@mixin hover {
+  &:hover,
+  &:active {
+    @content;
+  }
+}
+
+/* Пример
+a {
+  @include hoverParent($b) {
+    border: 1px solid red;
+    color: blue;
+  }
+}
+*/
+@mixin hoverParent($parent) {
+  #{$parent}:hover &,
+  #{$parent}:active &{
+    @content;
+  }
+}

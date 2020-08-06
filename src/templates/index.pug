@@ -2,19 +2,18 @@ extends layouts/default
 include helpers/mixins
 
 block variables
-	- const title = "Index"
+	- const title = "Sitemap"
+	- const bodyClass = "body--main-page"
 
 block content
-	+icon('info')
-	span.icon.icon-info
-	div 
-		a(href="#")
-			span a
-	div dasdasd
-		a(href="#")
-		| dasdasd	
-		span asasasa
-		| asdasdasd
+	ul
+		li
+			a(href="404.html") 404
+		li
+			a(href="main-page.html") Главная
+		li
+			a(href="ui.html") UI элементы
+	
 
 
 

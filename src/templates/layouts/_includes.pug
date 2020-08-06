@@ -1,0 +1,18 @@
+//- - var svgSpritePath = 'img/symbol/sprite.svg'
+include ../../../node_modules/bemto.pug/bemto
+
+-
+  set_bemto_settings({
+    prefix: {
+      'js-': true,
+      'is-': 'is-'
+    },
+    modifier: '--',
+  })
+
+
+include ../components/button
+include ../components/form
+include ../components/catalog
+include ../components/articles
+include ../components/breadcrumbs

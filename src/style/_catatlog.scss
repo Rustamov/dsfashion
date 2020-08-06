@@ -1,0 +1,391 @@
+.category-item {
+    $b: &;
+
+    
+    @extend .link-resset;
+    @extend .border-dashed-red;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    max-width: 204px;
+    padding: 0 0 35px;
+    text-align: center;
+    color: $color3;
+    transition: color 0.2s;
+
+    &.is-current {
+        color: #fff;
+    }
+    @include hover {
+        color: #fff;
+    }
+
+   
+
+    &__img {
+        &-wrap {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 240px;
+            margin: 0 0 30px;
+            overflow: hidden;
+            border-radius: 3px;
+            box-shadow: 0px 12px 21px 0px rgba(0, 0, 0, 0.11);
+            transition: box-shadow 0.2s;
+
+            #{$b}.is-current & {
+               box-shadow: 0px 12px 41px 0px rgba(0, 0, 0, 0.31);
+            }
+            
+            @include hoverParent($b) {
+               box-shadow: 0px 12px 41px 0px rgba(0, 0, 0, 0.31);
+            }
+
+              
+        }
+
+        @include fill-img;
+    }
+
+    &__title {
+        display: block;
+        margin: 0;
+    }
+}
+
+
+.category-block {
+    $b: &;
+    
+    &__top {
+        @include rule(margin-bottom, (xs: 40px, lg: 60px));
+        
+        &-row {
+            flex-wrap: nowrap;
+            align-items: center;
+            @include rule(flex-direction, (xs: column, md: row));
+            @include rule(justify-content, (xs: center, md: space-between));
+        }
+
+        &-col-title {
+            @include rule(margin-bottom, (xs: 20px, md: 0px));
+        }
+    }
+
+    &__controls {
+        display: flex;
+        align-items: center;
+
+        &-right {
+            margin-left: 10px;
+        }
+    }
+
+    &__slider {
+        
+        @include screen(xs) {
+            margin: 0 -45px 0; //by don`t cut image shadow
+            // border: 1px solid #000;
+            .slick-list {
+                padding: 0 30px;
+            }
+        }
+
+        &-item {
+            text-align: center;
+            padding: 0 15px;
+            transition: opacity 0.3s;
+            &:not(.slick-slide):not(:first-child) {
+                display: none;
+            }
+            &:not(.slick-active) {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+.catalog-nav {
+    $b: &;
+    &__list {
+        @extend .list-resset;
+        @extend .border-top-dashed-red;
+    }
+    &__item {
+        @extend .border-dashed-red;
+        display: block;
+        padding: 20px 0;
+    }
+
+    &__link {
+        @extend .link-resset;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        transition: color 0.2s;
+
+        @include hover {
+            color: $color3;
+        }
+    }
+
+    &__icon {
+        width: 40px;
+        margin: 0 15px 0 0;
+
+        &--woman {
+            .svg-icon {
+                width: 36px;
+                height: 40px;
+            }
+        }
+        &--man {
+            .svg-icon {
+                width: 35px;
+                height: 40px;
+            }
+        }
+        &--accessories {
+            .svg-icon {
+                width: 36px;
+                height: 36px;
+            }
+        }
+    }
+
+    &__name {
+        flex-grow: 1;
+        padding: 0 10px 0 0;
+        font-family: $ffOswald;
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 1.25;
+    }
+
+    &__arrow {
+        position: relative;
+        width: 14px;
+        height: 14px;
+        margin: 0;
+        z-index: 2;
+       
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 9px;
+            height: 9px;
+            margin-left: -5px;
+            margin-top: -6px;
+            border-right: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            background: none;
+            transform: rotate(45deg);
+        }
+    }
+
+    &__lv1 {
+        &-dropdown {
+            margin: 0;
+            padding: 0;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.2s, margin-top 0.4s, opacity 0.2s;
+                
+            #{$b}__item.is-open & {
+                max-height: 1000px;
+                // margin-top: 0px;
+    
+                // padding: 0 50px 30px 35px;
+    
+                opacity: 1;
+                
+            }
+        }
+
+        &-list {
+            @extend .list-resset;
+            padding: 15px 0 10px 55px;
+        }
+        &-item {
+            &:not(:last-child) {
+              margin-bottom: 15px;  
+            }
+        }
+        &-link {
+            @extend .link-resset;
+            font-family: $ffOswald;
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 1.25;
+            color: #000;
+            transition: color 0.2s;
+
+            @include hover {
+                color: $color1;
+            }
+            &.is-current {
+                color: $color1;
+            }
+        }
+        
+    }
+
+    &__lv2 {
+        &-dropdown {
+            margin: 0;
+            padding: 0;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.2s, margin-top 0.4s, opacity 0.2s;
+                
+            #{$b}__lv1-item.is-open & {
+                max-height: 1000px;
+                opacity: 1;
+            }
+        }
+
+        &-list {
+            @extend .list-resset;
+            padding: 20px 0 5px 15px;
+        }
+        &-item {
+            &:not(:last-child) {
+              margin-bottom: 15px;  
+            }
+        }
+        &-link {
+            @extend .link-resset;
+            width: 100%;
+            display: flex;
+            align-items: start;
+            font-family: $ffRoboto;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.25;
+            color: #000;
+            transition: color 0.2s;
+
+            @include hover {
+                color: $color1;
+            }
+            &.is-current {
+                color: $color1;
+            }
+        }
+
+        &-mark {
+            margin-top: -1px;
+            margin-right: 10px;
+        }
+        &-name {
+            max-width: calc(100% - 17px);
+            overflow-wrap: break-word;
+
+        }
+
+        
+    }
+
+}
+
+
+
+.catalog-item {
+    $b: &;
+   
+    @extend .link-resset;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    max-width: 265px;
+    margin: 0;
+    padding: 0;
+    color: #000;
+    border-radius: 3px;
+    box-shadow: 0px 12px 29px 0px rgba(88, 43, 0, 0.17);
+    transition: color 0.2s,  box-shadow 0.2s;
+    
+    @include hover {
+        color: #000;
+        box-shadow: 0px 12px 29px 0px rgba(88, 43, 0, 0.27);
+    }
+
+   
+
+    &__img {
+        &-wrap {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 240px;
+            margin: 0;
+            overflow: hidden;
+            border-radius: 3px;
+        }
+
+        @include fill-img;
+    }
+
+    &__main {
+        display: block;
+        padding: 22px 20px;
+    }
+    
+    &__title {
+        display: block;
+        margin: 0 0 15px;
+        font-family: $ffOswald;
+        font-size: 22px;
+        line-height: calc(29/22);
+        font-weight: 300;
+    }
+
+    &__props {
+        display: block;
+        font-size: 14px;
+        
+        &-item {
+            display: flex;
+            align-items: center;
+
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+        }
+
+        &-name {
+            min-width: 60px;
+            margin-right: 7px;
+            font-weight: 700;
+        }
+
+    }
+
+    &__colors {
+        display: flex;
+        align-items: center;
+    }
+
+    &__color {
+        display: flex;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        & + & {
+            margin-left: 5px;
+        }
+
+        &-part {
+            flex-grow: 1;
+        }
+
+    }
+
+}

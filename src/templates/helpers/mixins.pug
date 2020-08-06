@@ -1,7 +1,27 @@
-mixin icon(name,mod)
+mixin icon(name, mod)
 	if(mod)
-		svg(class="svg-sprite-icon icon-" + name + ' ' + mod)
-			use(xlink:href="img/sprite/sprite/symbol/sprite.svg#" + name)
-	else
-		svg(class="svg-sprite-icon icon-" + name)
+		svg(class="svg-icon svg-icon-" + name + ' ' + mod)
 			use(xlink:href="img/sprite/symbol/sprite.svg#" + name)
+	else
+		svg(class="svg-icon svg-icon-" + name)
+			use(xlink:href="img/sprite/symbol/sprite.svg#" + name)
+
+mixin dualTitle(tag, first, second, mod)
+	+b(tag || 'div').dual-title(class=mod)&attributes(attributes)
+		+e.SPAN.first= first
+		+e.SPAN.second= second
+
+mixin buttonArrow(direction, mod)
+	+b.BUTTON.btn-arrow(class='--' + direction class=mod)&attributes(attributes)
+		+icon('round-arrow-' + direction, 'btn-arrow__icon')
+
+mixin buttonArrowRight()
+	button.btn-arrow.btn-arrow--theme-red.btn-arrow--right&attributes(attributes)
+		+icon('round-arrow-right', 'btn-arrow__icon')
+
+
+mixin user-link()
+	+b.A.user-link(href="#")&attributes(attributes)
+		+e.SPAN.icon
+			+icon('user')
+		+e.SPAN.text Личный кабинет

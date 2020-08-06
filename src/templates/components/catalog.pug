@@ -1,0 +1,179 @@
+mixin categoryItem(name, image, width, height)
+	+b.A.category-item(href="#")&attributes(attributes)
+		+e.SPAN.img-wrap
+			+e.IMG.img(src=image alt=name width=width height=height)
+		+e.SPAN.title= name
+
+mixin categorySlider()
+	+b.category-block&attributes(attributes)
+		+e.top
+			+e.top-row.row
+				+e.top-col-title.col-auto
+					+dualTitle('h1', 'Онлайн', 'шоурум', '--theme-yellow-white')
+					
+				+e.top-col-controls.col-auto
+					+e.controls
+						+e.controls-left
+							+buttonArrow('left', 'js-category-block-slider-prev')
+						+e.controls-right
+							+buttonArrow('right', 'js-category-block-slider-next')
+
+		+e.slider-wrap
+			+e.slider.js-category-block-slider
+				+e.slider-item
+					+categoryItem('Твил', 'img/content/category-0.jpg', 204, 240)
+				+e.slider-item
+					+categoryItem('Велюр', 'img/content/category-1.jpg', 204, 240)
+				+e.slider-item
+					+categoryItem('Велюр', 'img/content/category-2.jpg', 204, 240)
+				+e.slider-item
+					+categoryItem('Твид', 'img/content/category-3.jpg', 204, 240)
+				+e.slider-item
+					+categoryItem('Кремплен', 'img/content/category-4.jpg', 204, 240)
+				+e.slider-item
+					+categoryItem('Твид', 'img/content/category-3.jpg', 204, 240)
+				+e.slider-item
+					+categoryItem('Велюр', 'img/content/category-2.jpg', 204, 240)
+				+e.slider-item
+					+categoryItem('Велюр', 'img/content/category-1.jpg', 204, 240)
+
+
+mixin catalogNav()
+	+b.catalog-nav&attributes(attributes)
+		+e.UL.list
+			+e.LI.item.js-catalog-nav-item-toggle
+				+e.A.link(href="#")
+					+e.SPAN.icon.--woman
+						i.icon.icon-catalog-nav-woman
+					+e.SPAN.name Женская коллекция
+					+e.I.arrow
+				
+				+e.lv1-dropdown
+					+e.UL.lv1-list
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Плащевые ткани
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Пальтовые ткани
+
+							+e.lv2-dropdown
+								+e.UL.lv2-list
+									+e.LI.lv2-item
+										+e.A.lv2-link(href="#") 
+											+e.SPAN.lv2-mark »
+											+e.SPAN.lv2-name  Новинки
+									+e.LI.lv2-item
+										+e.A.lv2-link(href="#") 
+											+e.SPAN.lv2-mark »
+											+e.SPAN.lv2-name  Трикотаж
+									+e.LI.lv2-item
+										+e.A.lv2-link(href="#").is-current
+											+e.SPAN.lv2-mark »
+											+e.SPAN.lv2-name Ворсовые шерстяные
+									+e.LI.lv2-item
+										+e.A.lv2-link(href="#") 
+											+e.SPAN.lv2-mark »
+											+e.SPAN.lv2-name Ворсовые поливискозные
+									+e.LI.lv2-item
+										+e.A.lv2-link(href="#") 
+											+e.SPAN.lv2-mark »
+											+e.SPAN.lv2-name  Твид
+
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Подкладочная ткань
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#").is-current Мех
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Дубленка
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Для отделки
+
+							
+
+			+e.LI.item.js-catalog-nav-item-toggle
+				+e.A.link(href="#")
+					+e.SPAN.icon.--man
+						i.icon.icon-catalog-nav-man
+					+e.SPAN.name Мужская коллекция
+					+e.I.arrow
+				
+				+e.lv1-dropdown
+					+e.UL.lv1-list
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Плащевые ткани
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Пальтовые ткани
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Подкладочная ткань
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Мех
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Дубленка
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Для отделки
+
+			+e.LI.item.js-catalog-nav-item-toggle
+				+e.A.link(href="#")
+					+e.SPAN.icon.--accessories
+						i.icon.icon-catalog-nav-accessories
+					+e.SPAN.name Фурнитура
+					+e.I.arrow
+				
+				+e.lv1-dropdown
+					+e.UL.lv1-list
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Молнии
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Пулеры, слайдеры
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Кнопки
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Пуговицы
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Шнуры
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Фиксаторы
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Концевики
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Броши
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Рамки
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Пряжки
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Застежки
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Цепи-вешалки
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Шевроны
+						+e.LI.lv1-item
+							+e.A.lv1-link(href="#") Разное
+
+
+mixin catalogListingItem(name, image, width, height)
+	+b.A.catalog-item(href="#")&attributes(attributes)
+		+e.SPAN.img-wrap
+			+e.IMG.img(src=image alt=name width=262 height=240)
+		+e.SPAN.main
+			+e.SPAN.title= name
+			+e.SPAN.props
+				+e.SPAN.props-item
+					+e.SPAN.props-name Артикул:
+					+e.SPAN.props-value 12345678
+
+				+e.SPAN.props-item
+					+e.SPAN.props-name Цвет:
+					+e.SPAN.props-value
+						+e.SPAN.colors
+							+e.SPAN.color
+								+e.I.color-part(style="background:#dccf9d")
+							+e.SPAN.color
+								+e.I.color-part(style="background:#dccf9d")
+								+e.I.color-part(style="background:#2b4860")      
+
+				+e.SPAN.props-item
+					+e.SPAN.props-name Состав:
+					+e.SPAN.props-value 100% вискоза
+
+
+

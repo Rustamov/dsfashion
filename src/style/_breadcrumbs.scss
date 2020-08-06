@@ -1,0 +1,45 @@
+.breadcrumbs {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+    display: flex;
+    @include rule(flex-wrap, (xs: nowrap, lg: wrap));
+    @include rule(overflow-x, (xs: auto, lg: hidden));;
+    align-items: center;
+    font-family: $ffRoboto;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: inherit;
+    
+    &__item {
+        display: inline-flex;
+        align-items: center;
+        font-weight: 400;
+        white-space: nowrap;
+        text-decoration: none;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.2s;
+
+        @include hover {
+            color: $color3;
+        }
+    }
+
+    &__sep {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 8px;
+        text-decoration: none;
+        font-weight: 300;
+        font-style: normal;
+    }
+}
+
+

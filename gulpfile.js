@@ -59,8 +59,8 @@ var path = {
             //'node_modules/wowjs/dist/wow.min.js',
             //'node_modules/magnific-popup/dist/jquery.magnific-popup.min.js',
 
-            //'node_modules/jquery-mask-plugin/dist/jquery.mask.min.js',
-            //'node_modules/parsleyjs/dist/parsley.min.js',
+            'node_modules/jquery-mask-plugin/dist/jquery.mask.min.js',
+            'node_modules/parsleyjs/dist/parsley.min.js',
             //'node_modules/js-parallax/dist/parallax.min.js',
 
             'src/js/main.js',
@@ -80,7 +80,10 @@ var path = {
         pug: 'src/**/*.pug',
         js: 'src/js/**/*.js',
         style: 'src/style/**/*.scss',
-        img: 'src/img/**/*.*',
+        img: [
+            'src/img/**/*.{gif,png,jpg,svg,webp}',
+            '!src/img/sprite/**/*'
+        ],
         svgSprite: 'src/img/sprite/svg/*.svg',
         pngSprite: 'src/img/sprite/png/*.png',
         root: 'src/root/**/*.*',
@@ -119,6 +122,7 @@ gulp.task('templates', function () {
           ] //remove tags: a, span, svg, button, img,
     }))
     .pipe(gulp.dest(path.build.pug))
+    .pipe(reload({stream: true}));
 
 });
 
@@ -150,17 +154,18 @@ gulp.task('style', function () {
 
 gulp.task('image', function () {
     return gulp.src(path.src.img) //Выберем наши картинки
-        .pipe(imagemin([
-            imagemin.gifsicle({interlaced: true}),
-            imagemin.jpegtran({progressive: true}),
-            imagemin.optipng({optimizationLevel: 5}),
-            imagemin.svgo({
-                plugins: [
-                    {removeViewBox: false},
-                    {cleanupIDs: false}
-                ]
-            })
-        ]))
+        // .pipe(imagemin())
+        // .pipe(imagemin([
+        //     imagemin.gifsicle({interlaced: true}),
+        //     imagemin.jpegtran({progressive: true}),
+        //     imagemin.optipng({optimizationLevel: 5}),
+        //     imagemin.svgo({
+        //         plugins: [
+        //             {removeViewBox: false},
+        //             {cleanupIDs: false}
+        //         ]
+        //     })
+        // ]))
         .pipe(gulp.dest(path.build.img)) //И бросим в build
         .pipe(reload({stream: true}));
 });
@@ -188,7 +193,8 @@ gulp.task('svgSprite', function () {
         }
       }
     }))
-    .pipe(gulp.dest(path.build.svgSprite));
+    .pipe(gulp.dest(path.build.svgSprite))
+    .pipe(reload({stream: true}));
 });
 
 
@@ -213,7 +219,7 @@ gulp.task('pngSprite', function () {
     const cssStream = spriteData.css
         .pipe(gulp.dest('src/style/'));
 
-    return merge(imgStream, cssStream);
+    return merge(imgStream, cssStream).pipe(reload({stream: true}));
 });
 
 
@@ -243,7 +249,7 @@ gulp.task('watch', function () {
     watch([path.watch.pug], gulp.series('templates'));
     watch([path.watch.style],gulp.series('style') );
     watch([path.watch.js], gulp.series('js'));
-    watch([path.watch.img],  gulp.series('image'));
+    watch(path.watch.img,  gulp.series('image'));
     watch([path.watch.svgSprite],  gulp.series('svgSprite'));
     watch([path.watch.pngSprite],  gulp.series('pngSprite'));
     watch([path.watch.root], gulp.series('root'));
