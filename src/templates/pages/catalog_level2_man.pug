@@ -1,0 +1,42 @@
+extends ../layouts/default
+include ../helpers/mixins
+
+block variables
+	- const title = "catalog_level2_man"
+
+block content
+	main.main
+		+b.p-catalog
+			.container
+				+e.SECTION.category-slider
+					+categorySlider
+
+				.breadcrumbs-block
+					+breadcrumbs(['Каталог'], 'Мужская коллекция')
+
+				+e.SECTION.main
+					+e.top
+						.row
+							+e.main-col-nav.col-12.col-lg-3
+								+catalogNav('man')
+							+e.main-col-items.col-12.col-lg-9
+								+e.H1.title Мужская коллекция
+
+								+e.items
+									+e.items-row.row
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Плащевые ткани', 'img/content/catalog-category-17.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Пальтовые ткани', 'img/content/catalog-category-18.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Подкладочные ткани', 'img/content/catalog-category-19.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Мех', 'img/content/catalog-category-20.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Дубленка', 'img/content/catalog-category-21.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Для отделки', 'img/content/catalog-category-22.png')
+
+				+sectionInf()
+
+				+sectionWhyUs()

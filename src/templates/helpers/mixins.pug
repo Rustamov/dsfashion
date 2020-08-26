@@ -22,6 +22,8 @@ mixin buttonArrowRight()
 
 mixin user-link()
 	+b.A.user-link(href="#")&attributes(attributes)
-		+e.SPAN.icon
+		+e.SPAN.icon&attributes(attributes)
 			+icon('user')
-		+e.SPAN.text Личный кабинет
+		+e.SPAN.text&attributes(attributes) Личный кабинет
+
+

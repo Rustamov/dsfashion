@@ -1,0 +1,796 @@
+.s-category {
+    @include rule(margin, (xs: 0 0 50px, lg: 0 0 100px));
+    
+    &--mb-50 {
+        @include rule(margin-bottom, (xs: 30px, lg: 0 0 50px));
+    }
+}
+
+.s-company {
+    @extend .border-dashed-red;
+    @include rule(margin, (xs: 0 0 20px, lg: 0 0 100px));
+    @include rule(padding, (xs: 0 0 50px, lg: 0 0 100px));
+
+    &::after {
+        @include rule(display, (xs: none, lg: block));
+    }
+
+
+
+    &__col {
+        
+        &-nav {
+            @include rule(order, (xs: 4, lg: 1));
+            @include rule(margin-bottom, (xs: 0, lg: 60px));
+
+        } 
+        &-padding {
+            order: 2;
+        }
+        &-title {
+            @include rule(order, (xs: 1, lg: 3));
+            @include rule(margin-bottom, (xs: 30px, lg: 60px));
+        }
+        &-text {
+            @include rule(order, (xs: 3, lg: 4));
+            @include rule(margin-bottom, (xs: 30px, lg: 0));
+        } 
+    }
+
+    &__title {
+        @extend .title;
+        display: block;
+        @include rule(margin, (xs: 0 0 30px, lg: -0.3em 0 45px));
+        color: #fff;
+       
+    }
+
+    &__descr {
+       
+        display: block;
+        // margin: 0 0 45px;
+        font-family: $ffPlayfairDisplay;
+        @include rule(font-size, (xs: 18px, lg: 23px));
+        font-weight: 700;
+        font-style: italic;
+        line-height: calc(33/23);
+        color: #000;
+
+        &-name {
+            font-size: 37px;
+        }
+    }
+
+    &__text {
+        &-video {
+            width: 280px;
+            margin: 0 auto 30px;
+        
+            @include screen('lg') {
+                float: left;
+                width: 653px;
+                margin: 0 30px 30px 0;
+            }
+        }
+    }
+}
+
+.s-new-coollection {
+    @extend .border-dashed-red;
+    @include rule(margin, (xs: 0 0 50px, lg: 0 0 100px));
+    @include rule(padding, (xs: 0 0 50px, lg: 0 0 100px));
+
+    &__top {
+        @include rule(margin-bottom, (xs: 40px, lg: 60px));
+        
+        &-row {
+            flex-wrap: nowrap;
+            @include rule(flex-direction, (xs: column, md: row));
+            @include rule(justify-content, (xs: center, md: space-between));
+            @include rule(align-items, (xs: flex-start, md: center));
+        }
+
+        &-col-title {
+            @include rule(margin-bottom, (xs: 20px, md: 0px));
+        }
+        &-col-controls {
+        }
+
+    }
+
+    &__items {
+        &-row {
+            // margin-top: -30px;
+            @extend .listing-row;
+        }
+
+        // &-col {
+        //     padding-top: 30px;
+        // }
+    }
+}
+
+.s-trends {
+    @include rule(margin, (xs: 0 0 50px, lg: 0 0 100px));
+ 
+    padding: 0;
+
+    &__top {
+        @include rule(margin-bottom, (xs: 40px, lg: 60px));
+    }
+
+    &__items {
+        &-row {
+            margin-top: -30px;
+        }
+
+        &-col {
+            padding-top: 30px;
+        }
+    }
+
+
+}
+
+
+.s-order {
+    @include rule(margin, (xs: 0 0 50px, lg: 0 0 100px));
+    @include rule(padding, (xs: 0 0 50px, lg: 0 0 100px));
+    color: #000;
+    @extend .border-dashed-red; 
+
+    &__top {
+        @include rule(margin-bottom, (xs: 35px, lg: 60px));
+    }
+
+    &__text-1 {
+        display: block;
+        @include rule(margin-bottom, (xs: 20px, lg: 27px));
+
+        // font-size: 18px;
+    }
+
+    &__form {
+        position: relative;
+        
+        &-main {
+            .is-form-sent & {
+              opacity: 0;
+              transform: translateY(-20px);
+              pointer-events: none;
+              transition: 0.3s;
+            }
+        }
+
+        &-row {
+            margin-top: -25px;
+        }
+
+        &-col {
+            padding-top: 25px;
+        }
+        
+        &-agree {
+            font-size: 13px;
+        }
+        &-required-mesage {
+            font-size: 12px;
+        }
+
+        &-succeed {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-self: center;
+            text-align: center;
+            margin: 0;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 50%;
+            opacity: 0;
+            transform: translateY(0);
+            pointer-events: none;
+        
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 1;
+
+            @include screen('lg') {
+                flex-direction: row;
+                align-items: center;
+                text-align: left;
+            }
+
+            
+            .is-form-sent & {
+              opacity: 1;
+              transform: translateY(-50%);
+              pointer-events: visible;
+            }
+        
+            &-icon {
+              margin: 0 0 36px;
+
+                @include screen('lg') {
+                    margin: 0 50px 0 0;
+                }
+
+        
+              .svg-icon {
+                width: 60px;
+                height: 60px;
+                color: $color5;
+        
+                @include screen('lg') {
+                    width: 109px;
+                    height: 109px;
+                }
+              }
+            }
+        
+            &-middle {
+                max-width: 330px;
+                margin: 0 0 34px;
+
+                @include screen('lg') {
+                    margin: 0 60px 0 0;
+                }
+            }
+            &-title {
+                margin: 0 0 20px;
+                font-size: 26px;
+                font-weight: 700;
+            }
+            &-text {
+                font-size: 16px;
+            }
+        
+          }
+    }
+
+}
+
+
+
+.s-useful-inf {
+    @include rule(margin, (xs: 0 0 50px, lg: 0 0 100px));
+ 
+    padding: 0;
+
+    &__top {
+        @include rule(margin-bottom, (xs: 40px, lg: 60px));
+    }
+
+    &__items {
+        &-row {
+            margin-top: -30px;
+        }
+
+        &-col {
+            padding-top: 30px;
+        }
+    }
+
+
+}
+
+.s-why-us {
+    margin: 0; 
+    padding: 0;
+
+    &__top {
+        @include rule(margin-bottom, (xs: 40px, lg: 60px));
+    }
+
+    &__text {
+        // font-size: 18px;
+        @include screen ('md') {
+            columns: 2;
+            column-gap: 30px;
+        }
+    }
+
+}
+
+
+
+.collection-slider {
+    margin: 0;
+    padding: 0;        
+
+    $b: &;
+
+    &__items {
+        margin: 0 0 35px;
+    }
+    &__item {
+        padding: 0 1px;
+
+        &:not(.slick-slide):not(:first-child) {
+            display: none;
+        }
+
+        &-img {
+            &-wrap {
+                @extend .link-resset;
+                display: block;
+                position: relative;
+            }
+            
+        }
+
+        $imgWrap: #{$b}__item-img-wrap;
+        &-zoom {
+            @extend .hover-zoom;
+            color: #fff;
+
+            @include hoverParent($imgWrap) {
+                opacity: 1;
+            }
+        }
+    }
+
+    
+    &__controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-right {
+            margin-left: 10px;
+        }
+    }
+
+}
+
+.s-inf {
+    @include rule(margin, (xs: 0 0 50px, lg: 0 0 100px));
+    padding: 0;
+    color: #000;
+
+
+    &__slider {
+        max-width: 350px;
+        margin: 0 auto;
+        padding-bottom: 18px;
+    }
+
+    &__box {
+        @include rule(min-height, (xs: 1px, lg: 100%));
+        display: flex;
+        flex-direction: column;
+        @include rule(margin-bottom, (xs: 40px, lg: 0));
+
+        &-title {
+            display: block;
+            margin: 0 0 28px;
+            text-transform: none;
+            font-family: $ffPlayfairDisplay;
+            @include rule(font-size, (xs: 26px, md: 30px, xl: 36px));
+            font-weight: 700;
+            line-height: 1.25;
+            font-style: italic;
+        }
+
+        &-main {
+            @include rule(flex-grow, (xs: 0, lg: 1));
+            padding: 0;
+            @include rule(margin, (xs: 0 0 15px, lg: 0 0 22px));
+            
+            &--bb {
+                @extend .border-dashed-red;
+            }
+        }
+        &-bottom {}
+
+        &-link {
+            @extend .link;
+            @extend .link--theme-red;
+            font-size: 14px;
+        }
+
+        &-articles {
+            margin-top: -18px;
+        }
+
+
+
+        
+        &-title {}
+        &-title {}
+    }
+
+    &__text {
+        padding-bottom: 18px;
+        font-size: 16px;
+    }
+}
+
+
+.s-items {
+    @extend .border-dashed-red;
+    @include rule(margin, (xs: 0 0 50px, lg: 0 0 100px));
+    @include rule(padding, (xs: 0 0 10px, lg: 0 0 60px));
+
+    &--error {
+        margin: 0;
+        padding: 0;
+        &::before,
+        &::after {
+            content: none;
+            display: none;
+        }
+    }
+
+    &__top {
+        @include rule(margin-bottom, (xs: 40px, lg: 60px));
+        
+        &-row {
+            flex-wrap: nowrap;
+            align-items: center;
+            @include rule(flex-direction, (xs: column, md: row));
+            @include rule(justify-content, (xs: center, md: space-between));
+        }
+
+        &-col-title {
+            @include rule(margin-bottom, (xs: 20px, md: 0px));
+        }
+    }
+
+    &__items {
+        &-row {
+            margin-top: -30px;
+        }
+
+        &-col {
+            padding-top: 30px;
+        }
+    }
+}
+
+
+.register {
+    @extend .border-dashed-red;
+    @include rule(margin, (xs: 0 0 50px, lg: 0 0 100px));
+    @include rule(padding, (xs: 0 0 50px, lg: 0 0 100px));
+
+    &__form {
+
+        &-row {
+            @extend .row-mt-25;
+        }
+
+        &-col {
+            &--submit {
+                @include rule(text-align, (xs: left, lg: right));
+            }
+        }
+
+        &-required-mesage {
+            font-size: 12px;
+        }
+
+    }
+}
+
+.authorization {
+    @extend .border-dashed-red;
+    @include rule(margin, (xs: 0 0 50px, lg: 0 0 100px));
+    @include rule(padding, (xs: 0 0 50px, lg: 0 0 100px));
+    
+    &__form {
+
+        &-row {
+            @extend .row-mt-25;
+        }
+
+        &-col {
+            &--submit {
+                align-self: flex-end;
+                // @include rule(text-align, (xs: center, lg: right));
+            }
+        }
+        
+        &-link {
+            font-size: 14px;
+        }
+        &-required-mesage {
+            font-size: 12px;
+        }
+    }
+}
+
+.profile {
+    @include rule(margin, (xs: 0 0 50px, lg: 0 0 100px));
+
+    &__sec {
+        &--inf {
+            @extend .border-dashed-red;
+            margin: 0 0 50px;
+            padding: 0 0 50px; 
+        }
+        &--password {
+            @extend .border-dashed-red;
+            margin: 0;
+            padding: 0 0 50px; 
+        }
+
+        &-title {
+            @extend .title-1;
+            display: block;
+            margin: 0 0 25px;
+            text-transform: none;
+        }
+
+    }
+    &__form {
+
+        &-row {
+            @extend .row-mt-25;
+        }
+
+        &-col {
+            &--submit {
+                padding-top: 30px !important;
+                // @include rule(text-align, (xs: center, lg: right));
+            }
+        }
+        
+    }
+}
+
+.collection-empty {
+    // @extend .border-dashed-red;
+    // @include rule(margin, (xs: 0 0 50px, lg: 0 0 100px));
+    // @include rule(padding, (xs: 0 0 50px, lg: 0 0 100px));
+
+    &__row {
+        @extend .row-mt-25;
+    }
+    &__col-text {
+        @include rule(width, (xs: 100%, lg: calc(100% - 300px)));
+    }
+    &__col-button {
+        @include rule(margin-left, (xs: 0, lg: auto));
+    }
+}
+
+
+.new-collection {
+    // @extend .border-dashed-red;
+    // margin: 0 0 100px;
+    // padding: 0 0 100px;
+
+    &__items {
+        margin: 0 0 40px;
+
+        &-row {
+            @extend .listing-row;
+        }
+    }
+}
+
+
+.error {
+    @extend .border-dashed-red;
+    @include rule(margin, (xs: 0 0 50px, lg: 0 0 100px));
+    @include rule(padding, (xs: 0 0 50px, lg: 0 0 100px));
+    // color
+
+    &__row {
+        @include rule(margin-top, (xs: -40px, lg: 0px));
+    }
+    &__col {
+        @include rule(width, (xs: 100%, lg: 33.3333%));
+        @include rule(padding-top, (xs: 40px, lg: 0px));
+        text-align: center;
+
+        &--box-1 {
+            @include rule(order, (xs: 2, lg: 1));
+        }
+        &--inf {
+            @include rule(order, (xs: 1, lg: 2));
+        }
+        &--box-2 {
+            order: 3;
+        }
+    }
+    &__title {
+        display: block;
+        margin: 0;
+
+        &-top {
+            display: block;
+            margin: -0.1em 0 15px;
+            font-family: $ffOswald;
+            @include rule(font-size, (xs: 150px, lg: 211px));
+            line-height: 1;
+            font-weight: 300;
+        }
+        &-under {
+            display: block;
+            margin: 0;
+            font-family: $ffPlayfairDisplay;
+            @include rule(font-size, (xs: 20px, lg: 30px));
+            line-height: 1.5;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+    }
+
+    &__box {
+        @include rule(padding-top, (xs: 0, lg: 20px));
+        @include rule(height, (xs: auto, lg: 100%));
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &-title {
+            display: block;
+            margin: 0 0 15px;
+            font-family: $ffPlayfairDisplay;
+            @include rule(font-size, (xs: 22px, lg: 34px));
+            line-height: 1.5;
+            font-weight: 700;
+            font-style: italic;
+        }
+        &-text {
+            display: block;
+            margin: 0 0 15px;
+            font-size: 16px;
+        }
+    }
+
+
+
+}   
+
+
+
+.articles {
+    // @extend .border-dashed-red;
+    // margin: 0 0 100px;
+    // padding: 0 0 100px;
+
+    &__items {
+        margin: 0 0 40px;
+
+        &-row {
+            @extend .listing-row;
+        }
+    }
+}
+
+.map {
+    position: relative;
+    @include rule(height, (xs: 300px, lg: 420px));
+    width: 100%;
+
+    &__points {
+        display: none;
+    }
+    &__area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: #ebebeb;
+    }
+}
+
+.inf-box {
+    display: flex;
+
+    &__icon {
+        @include rule(width, (xs: 45px, lg: 60px));
+        margin-right: 25px;
+        flex-shrink: 0;
+        .svg-icon {
+            @include rule(width, (xs: 45px, lg: 60px));
+            @include rule(height, (xs: 45px, lg: 60px));
+            color: $color1;
+            
+        }
+        // &--address .svg-icon{
+        //     width: 60px;
+        //     height: 60px;
+        // }
+        // &--phone .svg-icon{
+        //     width: 60px;
+        //     height: 60px;
+        // }
+        // &--email .svg-icon{
+        //     width: 60px;
+        //     height: 60px;
+        // }
+    }
+
+    &__label {
+        display: block;
+        @include rule(margin, (xs: 0 0 8px, lg: 0 0 12px));
+        font-family: $ffOswald;
+        @include rule(font-size, (xs: 16px, lg: 18px));
+        font-weight: 300;
+        color: $color1;
+    }
+
+    &__value {
+        @include rule(font-size, (xs: 14px, lg: 16px));
+    }
+
+    &__number {
+        @extend .link-resset;
+        display: block;
+        margin: 0;
+        font-family: $ffOswald;
+        font-weight: 300;
+        @include rule(font-size, (xs: 20px, lg: 24px));
+
+        line-height: 1;
+        color: #000;
+        text-decoration: none;
+        transition: 0.2s;
+
+        @include hover {
+            color: $color1;
+        }
+    }
+
+    &__email {
+        @extend .link;
+        @extend .link--bd-solid;
+        @extend .link--theme-black;
+        
+        font-family: $ffOswald;
+        font-weight: 300;
+        @include rule(font-size, (xs: 20px, lg: 24px));
+        line-height: 1;
+        text-decoration: none;
+    }
+
+}
+
+.contacts {
+    color: #0e0e0e;
+
+
+    &__sec-title {
+        @extend .title-1;
+        display: block;
+        @include rule(margin, (xs: 0 0 25px, lg: 0 0 35px));
+        text-transform: none;
+    }
+    &__office {
+        @extend .border-dashed-red;
+        @include rule(margin, (xs: 0 0 40px, lg: 0 0 60px));
+        @include rule(padding, (xs: 0 0 40px, lg: 0 0 60px));
+        
+        &-top {
+            @include rule(margin, (xs: 0 0 30px, lg: 0 0 40px));
+
+            
+            &-row {
+                @extend .row-mt-25;
+                
+            }
+            &-col {
+
+            }
+        }
+    }
+
+    &__requisites {
+        &-row {
+            @extend .row-mt-25;
+            
+        }
+        &-text {
+            // font-size: 18px;
+            line-height: 1.9;
+        }
+    }
+}

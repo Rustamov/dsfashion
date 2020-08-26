@@ -1,0 +1,25 @@
+.page-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    @include rule(margin, (xs: 0 0 30px, lg: 0 0 50px));
+
+    &__text {
+        @extend .title;
+        margin: 0 1.1em 0 0;
+        color: #fff;
+    }
+    &__link {
+        @extend .link;
+        @extend .link--bd-dashed;
+        @extend .link--theme-black;
+        @extend .title-1;
+        text-decoration: none ;
+        margin: 0;
+    }
+}
+
+.p-def {
+}
+
+

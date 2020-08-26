@@ -1,8 +1,8 @@
 .header-logo {
     @extend .link-resset;
     display: block;
-    max-width: 241px; 
-    // border: 1px solid transparent;
+    max-width: 140px;
+    @include rule(max-width, (xs: 140px, sm: 170px, xl: 241px));
 
     &__inner {
         display: block;
@@ -19,21 +19,28 @@
 }
 .header-title {
     display: block;
-    max-width: 120px;
+    max-width: 95px;
     margin: 0;
     font-family: $ffOswald;
     font-weight: 300;
-    font-size: 20px;
+    @include rule(font-size, (xs: 16px, xl: 20px));
+
     line-height: calc(28/20);
+
+    @include screen ('xl') {
+        max-width: 120px;
+    }
+
     
     &__span {
         display: inline;
         font-family: $ffPlayfairDisplay;
         font-weight: 300;
-        font-size: 26px;
+        @include rule(font-size, (xs: 20px, xl: 26px));
         line-height: calc(28/26);
         font-style: italic;
         color: $color3;
+
     }
 }
 .header-mail {
@@ -44,7 +51,7 @@
         display: block;
         font-family: $ffPlayfairDisplay;
         font-weight: 300;
-        font-size: 26px;
+        @include rule(font-size, (xs: 20px, xl: 26px));
         line-height: calc(28/26);
         font-style: italic;
         color: $color3;
@@ -56,13 +63,19 @@
         
         font-family: $ffOswald;
         font-weight: 300;
-        font-size: 20px;
+        @include rule(font-size, (xs: 16px, xl: 20px));
+
         line-height: calc(28/20);
         text-decoration: none;
+
+        &--mobile-menu {
+            @extend .link--theme-black;
+        }
     }
 }
 
 .header-callback {
+    $b: &;
 
     text-align: center;
 
@@ -72,15 +85,22 @@
         margin: 0 0 3px;
         font-family: $ffOswald;
         font-weight: 300;
-        font-size: 27px;
+        // font-size: 16px;
+        @include rule(font-size, (xs: 16px, sm: 21px, xl: 27px));
         line-height: 1;
         color: $color3;
         text-decoration: none;
         transition: 0.2s;
 
+        &--mobile-menu {
+            font-size: 20px;
+        }
+
         @include hover {
             color: darken($color3, 10)
         }
+        
+       
     }
 
     &__popup {
@@ -90,41 +110,44 @@
         
         font-family: $ffOswald;
         font-weight: 300;
-        font-size: 20px;
+        @include rule(font-size, (xs: 12px, sm: 16px, xl: 20px));
         text-decoration: none;
+        
+        &--mobile-menu {
+            @extend .link--theme-black;
+            font-size: 14px;
+        }
+
     }
 }
-
 
 
 .header-nav {
     // margin-bottom: 30px;
     // margin: -2px 0 0;
-    
     &__list {
         @extend .list-resset;
         width: 100%;
         display: flex;
-        // @include rule(flex-direction, (xs: column, lg: row));
+        @include rule(flex-direction, (xs: column, lg: row));
         align-items: center;
         justify-content: space-between;
     }
 
     &__item {
-        // text-align: left;
-        // border: 1px solid #000;
-        flex-grow: 1;
+        @include rule(width, (xs: 100%, lg: auto));
+        @include rule(flex-grow, (xs: 0, lg: 1));
+
         &:not(:last-child) {
-            border-right: 1px solid transparentize(#4d0607, 0.82);
-            // margin: 0 20px 0 0;
-            // @include rule(margin, (xs: 0 0 20px 0, lg: 0 20px 0 0));
+            @include rule(border-right, (xs: none, lg: 1px solid transparentize(#4d0607, 0.82)));
+            // @include rule(margin, (xs: 0 0 20px 0, lg: 0));
         }
     }
 
     &__link {
         @extend .link-resset;
         display: block;
-        padding: 0 0 2px;
+        @include rule(padding, (xs: 10px 0, lg: 0 0 2px));
         text-align: center;
         font-family: $ffOswald;
         font-size: 22px;
@@ -226,6 +249,12 @@
       cursor: pointer;
       transition: 0.5s;
       outline: none;
+      right: 0;
+      transition: right 0.5s 0.2s;
+
+      .mobile-menu-open & {
+        right: -15px;
+      }
   
   
       &-icon {
@@ -247,8 +276,8 @@
   
         &-line {
           position: absolute;
-          right: 25%;
-          left: 25%;
+          right: 15%;
+          left: 15%;
           height: 2px;
           margin-top: -1px;
           background-color: currentcolor;
@@ -262,13 +291,13 @@
           #{$b}.open & {
             top: 50%;
           }
-          &--1 {
+          &--first {
             top: 29%;
-            left: 33%;
+            // left: 33%;
             
             #{$b}:not(.open) #{$b}__trigger:hover &,
             #{$b}:not(.open) #{$b}__trigger:active & {
-              left: 25%;
+              left: 15%;
             }
 
             #{$b}.open & {
@@ -278,13 +307,13 @@
 
           }
 
-          &--2 {
+          &--second {
             top: 50%;
-            left: 45%;
+            // left: 45%;
 
             #{$b}:not(.open) #{$b}__trigger:hover &,
             #{$b}:not(.open) #{$b}__trigger:active & {
-              left: 25%;
+              left: 15%;
             }
 
             #{$b}.open & {
@@ -293,7 +322,7 @@
           }
          
 
-          &--3 {
+          &--third {
             top: 71%;
             
             #{$b}.open & {
@@ -314,7 +343,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      text-align: left;
+      text-align: center;
       z-index: 0;
       background: #fff;
       color: #000;
@@ -341,38 +370,38 @@
         width: 100%;
         min-height: 100vh;
         
-        padding: 140px 0 60px;
+        padding: 40px 0 90px;
       }
   
       &-container {
-        width: 100%;
+        // width: 100%;
+        padding: 0 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
     }
   
+    &__logo {
+        margin: 0 0 30px;
+    }
     &__nav {
-        margin-bottom: 30px;
+        margin: 0 0 30px;
     }
-    
-    &__contacts-block {
-        text-align: center;
-        margin-bottom: 30px;
+    &__catalog-nav {
+        margin: 0 0 30px;
+        text-align: left;
     }
-
-    &__numbers {
-        display: flex;
-        margin: 0 0 15px;
-        justify-content: center
-    }
-
     &__email {
-        display: flex;
-        margin: 0 0 25px;
-        justify-content: center;
+        margin: 0 0 30px;
     }
-
-    &__button {
-        display: block;
-        text-align: center;
+    &__callback {
+        margin: 0 0 30px;
+    }
+    &__user-link {
+        margin: 0 0 30px;
+    }
+    &__order-btn {
     }
 
 
@@ -443,6 +472,7 @@
     }
     &__top {
         padding: 45px 0;
+        @include rule(padding, (xs: 20px 0, lg: 45px 0));
 
         &-row {
             justify-content: space-between;
@@ -452,8 +482,42 @@
 
         &-col {
             &-hr {
-
+                display: none;
+                
+                @include screen ('lg') {
+                    display: block;
+                    padding-right: 10px;
+                    padding-left: 10px;
+                }
+                @include screen ('xl') {
+                    padding-right: 15px;
+                    padding-left: 15px;
+                }
+                
             }
+
+            &-title {
+                display: none;
+                
+                @include screen ('lg') {
+                    display: block;
+                }
+            }
+            &-email {
+                display: none;
+                
+                @include screen ('lg') {
+                    display: block;
+                }
+            }
+            &-last {
+                display: none;
+                
+                @include screen ('lg') {
+                    display: block;
+                }
+            }
+            
         }
 
         &-hr {
@@ -479,10 +543,18 @@
 
     &__nav-line {
         position: relative;
-        padding: 10px 40px 10px 20px;
-        min-height: 60px;
-        background: url(../img/header-nav-bg.png) 50% 50% no-repeat;
-        background-size: contain;
+        height: 54px;
+        padding: 7px 15px;
+        background:  linear-gradient(90deg,#a6661c 0,#c58932 15%,#f2b848 50%,#c58932 85%,#a6661c 100%);
+        border-radius: 4px;
+
+        @include screen ('lg') {
+            padding: 10px 40px 10px 20px;
+            height: 60px;
+            background: url(../img/header-nav-bg.png) 50% 50% no-repeat;
+            background-size: contain;
+            border-radius: 0px;
+        }
 
         &::before {
             content: '';
@@ -501,9 +573,14 @@
 
         &-col-nav {
             width: 70%;
+            @include rule(display, (xs: none, lg: block));
         }
         &-col-search {
-            width: 30%;
+            @include rule(width, (xs: 77%, sm: 70%, lg: 30%));
+        }
+        &-col-mobile-menu {
+            margin-left: auto;
+            @include rule(display, (xs: block, lg: none));
         }
     }
 }

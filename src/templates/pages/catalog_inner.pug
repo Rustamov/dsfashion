@@ -1,0 +1,117 @@
+extends ../layouts/default
+include ../helpers/mixins
+
+block variables
+	- const title = "catalog_inner"
+	- const bodyClass = "body--bg-top-small"
+
+block content
+	main.main.main--pt-40
+		+b.p-item
+			.container
+				.breadcrumbs-block
+					+breadcrumbs(['Каталог', 'Женская коллекция', 'Пальтовые ткани', 'Трикотаж', 'Жаккард'], '15876')
+
+				+e.SECTION.card
+					.row
+						+e.card-col-nav.col-12.col-lg-3
+							+catalogNav('')
+						+e.card-col-item.col-12.col-lg-9
+							+e.H1.title 15876
+
+							+item 
+
+						+e.card-col-descr.col-12
+							+e.card-descr
+								+e.card-title Описание
+
+								+e.card-text.text 
+									p  
+									| Жаккард отличного качества. У нас вы найдете еще много видов и расцветок 
+									a(href="#") жаккардов. 
+									| На сайте представлена лишь малая доля тканей которые есть в наличии на наших складах. В нашем офисе есть множество образцов, которые еще не представлены в России. Сотрудники компании D&S Fashion неустанно отслеживают новинки производимые на различных фабриках и присылают нам новые образцы тканей жаккарда, которые вы уже можете заказать и получить их первыми. В качестве материала вы можете быть уверены, так как многолетний опыт и постоянные проверки качества позволяют нам плодотворно сотрудничать на протяжении многих лет с крупнейшими производителями верхней одежды в стране. Жаккарды для верхней одежды это одно из основных направлений нашей компании.
+
+
+				
+				+b.SECTION.s-items
+					+b.items-block&attributes(attributes)
+						+e.top
+							+e.top-row.row
+								+e.top-col-title.col-auto
+									+dualTitle('h2', 'Сопутствующие', 'товары', '--theme-white-black')
+									
+								+e.top-col-controls.col-auto
+									+e.controls
+										+e.controls-left
+											+buttonArrow('left', '--theme-red js-items-slider-prev')
+										+e.controls-right
+											+buttonArrow('right', '--theme-red js-items-slider-next')
+
+						+e.slider-wrap
+							+e.slider.js-items-slider
+								
+								+e.slider-item
+									+catalogListingItem('168133', 'img/content/catalog-item-0.jpg')
+
+								+e.slider-item
+									+catalogListingItem('15876', 'img/content/catalog-item-1.jpg')
+
+								+e.slider-item
+									+catalogListingItem('15865', 'img/content/catalog-item-2.jpg')
+
+								+e.slider-item
+									+catalogListingItem('168126', 'img/content/catalog-item-3.jpg')
+
+								+e.slider-item
+									+catalogListingItem('15876', 'img/content/catalog-item-1.jpg')
+
+								+e.slider-item
+									+catalogListingItem('15865', 'img/content/catalog-item-2.jpg')
+
+								+e.slider-item
+									+catalogListingItem('168126', 'img/content/catalog-item-3.jpg')
+								
+				
+				+b.SECTION.s-items
+					+b.items-block&attributes(attributes)
+						+e.top
+							+e.top-row.row
+								+e.top-col-title.col-auto
+									+dualTitle('h2', 'Похожие', 'товары', '--theme-white-black')
+									
+								+e.top-col-controls.col-auto
+									+e.controls
+										+e.controls-left
+											+buttonArrow('left', '--theme-red js-items-slider-prev')
+										+e.controls-right
+											+buttonArrow('right', '--theme-red js-items-slider-next')
+
+						+e.slider-wrap
+							+e.slider.js-items-slider
+								
+								+e.slider-item
+									+catalogListingItem('168133', 'img/content/catalog-item-0.jpg')
+
+								+e.slider-item
+									+catalogListingItem('15876', 'img/content/catalog-item-1.jpg')
+
+								+e.slider-item
+									+catalogListingItem('15865', 'img/content/catalog-item-2.jpg')
+
+								+e.slider-item
+									+catalogListingItem('168126', 'img/content/catalog-item-3.jpg')
+
+								+e.slider-item
+									+catalogListingItem('15876', 'img/content/catalog-item-1.jpg')
+
+								+e.slider-item
+									+catalogListingItem('15865', 'img/content/catalog-item-2.jpg')
+
+								+e.slider-item
+									+catalogListingItem('168126', 'img/content/catalog-item-3.jpg')
+
+				+sectionInf()
+
+				+sectionWhyUs()
+
+

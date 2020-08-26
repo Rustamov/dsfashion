@@ -1,0 +1,71 @@
+extends ../layouts/default
+include ../helpers/mixins
+
+block variables
+	- const title = "new_collection_registered"
+	- const bodyClass = "body--bg-top-small"
+
+block content
+	main.main.main--pt-40
+		+b.p-def
+			.container
+				.breadcrumbs-block
+					+breadcrumbs([], 'Новая коллекция')
+
+				+b.page-title
+					+dualTitle('h1', 'Новая', 'коллекция')
+
+
+				
+				+b.SECTION.new-collection
+					+e.items
+						+e.items-row.row
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('168133', 'img/content/catalog-item-0.jpg')
+
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('15876', 'img/content/catalog-item-1.jpg')
+
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('15865', 'img/content/catalog-item-2.jpg')
+
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('15865', 'img/content/catalog-item-2.jpg')
+								
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('168133', 'img/content/catalog-item-0.jpg')
+
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('15876', 'img/content/catalog-item-1.jpg')
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('168133', 'img/content/catalog-item-0.jpg')
+
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('15876', 'img/content/catalog-item-1.jpg')
+
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('15865', 'img/content/catalog-item-2.jpg')
+
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('15865', 'img/content/catalog-item-2.jpg')
+								
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('168133', 'img/content/catalog-item-0.jpg')
+
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('15876', 'img/content/catalog-item-1.jpg')
+
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('15865', 'img/content/catalog-item-2.jpg')
+
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('15865', 'img/content/catalog-item-2.jpg')
+								
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('168133', 'img/content/catalog-item-0.jpg')
+
+							+e.items-col.col-6.col-lg-4.col-xl-3
+								+catalogListingItem('15876', 'img/content/catalog-item-1.jpg')
+
+					+pagination()
+

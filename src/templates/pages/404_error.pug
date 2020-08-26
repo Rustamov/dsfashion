@@ -1,0 +1,80 @@
+extends ../layouts/default
+include ../helpers/mixins
+
+block variables
+	- const title = "404_error"
+	- const bodyClass = "body--bg-top-small"
+
+block content
+	main.main
+		+b.p-404
+			.container
+
+				+b.SECTION.error
+					+e.row.row
+						+e.col.--box-1.col-auto
+							+e.box
+								+e.box-title Потерялись?
+								+e.box-text.text
+									p
+										b Попробуйте начать 
+										| с 
+										a(href="/") главной страницы
+										| , воспользуйтесь поиском выше или поищите нужный вам товар в каталоге
+								+e.box-button
+									+buttonRedL('Перейти в каталог', 'a')(href="catalog_level1.html")
+
+						+e.col.--inf.col-auto
+							+e.H1.title 
+								+e.title-top 404
+								+e.title-under Страница не найдена
+
+						+e.col.--box-2.col-auto
+							+e.box
+								+e.box-title Нужна помощь?
+								+e.box-text.text
+									p
+										b Если не хотите терять время, 
+										| просто оставьте заявку и мы поможем вам в выборе!
+								+e.box-button
+									+buttonRedL('Оставить заявку', 'a').js-popup(href="#popup-callback")
+
+				+b.SECTION.s-items.--error
+					+b.items-block&attributes(attributes)
+						+e.top
+							+e.top-row.row
+								+e.top-col-title.col-auto
+									+dualTitle('h2', 'Популярные', 'товары', '--theme-white-black')
+									
+								+e.top-col-controls.col-auto
+									+e.controls
+										+e.controls-left
+											+buttonArrow('left', '--theme-red js-items-slider-prev')
+										+e.controls-right
+											+buttonArrow('right', '--theme-red js-items-slider-next')
+
+						+e.slider-wrap
+							+e.slider.js-items-slider
+								
+								+e.slider-item
+									+catalogListingItem('168133', 'img/content/catalog-item-0.jpg')
+
+								+e.slider-item
+									+catalogListingItem('15876', 'img/content/catalog-item-1.jpg')
+
+								+e.slider-item
+									+catalogListingItem('15865', 'img/content/catalog-item-2.jpg')
+
+								+e.slider-item
+									+catalogListingItem('168126', 'img/content/catalog-item-3.jpg')
+
+								+e.slider-item
+									+catalogListingItem('15876', 'img/content/catalog-item-1.jpg')
+
+								+e.slider-item
+									+catalogListingItem('15865', 'img/content/catalog-item-2.jpg')
+
+								+e.slider-item
+									+catalogListingItem('168126', 'img/content/catalog-item-3.jpg')
+
+

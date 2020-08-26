@@ -1,0 +1,154 @@
+extends ../layouts/default
+include ../helpers/mixins
+
+block variables
+	- const title = "contacts"
+	- const bodyClass = "body--bg-top-small"
+
+block content
+	main.main.main--pt-40
+		+b.p-def
+			.container
+				.breadcrumbs-block
+					+breadcrumbs([], 'Контакты')
+
+				+b.page-title
+					+e.H1.__text Контакты
+
+				script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU")
+				
+				+b.SECTION.contacts
+					+e.office
+						+e.H2.sec-title Главный офис
+						+e.office-top
+							+e.office-top-row.row
+								+e.office-top-col.col-12.col-lg-4
+									+b.inf-box
+										+e.icon.--address
+											+icon('address-pin')
+										+e.main
+											+e.label Адрес
+											+e.value г. Москва, ул.Пермская, д.11, стр.5, офис 621
+
+								+e.office-top-col.col-12.col-lg-4
+									+b.inf-box
+										+e.icon.--phone
+											+icon('phone')
+										+e.main
+											+e.label Телефон
+											+e.value 
+												+e.A.number(href="tel:+74955553535") + 7 (495) 555-35-35
+
+								+e.office-top-col.col-12.col-lg-4
+									+b.inf-box
+										+e.icon.--email
+											+icon('e-mail')
+										+e.main
+											+e.label E-mail
+											+e.value 
+												+e.A.email(href="mailto:info@dsfashion.ru") info@dsfashion.ru
+
+						
+						+e.office-map.map.js-map-yandex(
+							data-geolocation=""
+							data-zoom=""
+							)
+							ul.map__points.js-map-yandex-points(
+								data-zoom="16"
+								data-c-lat="55.821391"
+								data-c-long="37.728002"
+								)
+								li(
+									data-lat="55.821391"
+								 	data-long="37.728002"
+								 	data-title="г. Москва, ул.Пермская, д.11, стр.5, офис 621"
+									)  
+							.map__area.js-map-yandex-area  
+
+					+e.office
+						+e.H2.sec-title Офис 2
+						+e.office-top
+							+e.office-top-row.row
+								+e.office-top-col.col-12.col-lg-4
+									+b.inf-box
+										+e.icon.--address
+											+icon('address-pin')
+										+e.main
+											+e.label Адрес
+											+e.value г. Москва, ул.Пермская, д.11, стр.5, офис 621
+
+								+e.office-top-col.col-12.col-lg-4
+									+b.inf-box
+										+e.icon.--phone
+											+icon('phone')
+										+e.main
+											+e.label Телефон
+											+e.value 
+												+e.A.number(href="tel:+74955553535") + 7 (495) 555-35-35
+
+								+e.office-top-col.col-12.col-lg-4
+									+b.inf-box
+										+e.icon.--email
+											+icon('e-mail')
+										+e.main
+											+e.label E-mail
+											+e.value 
+												+e.A.email(href="mailto:info@dsfashion.ru") info@dsfashion.ru
+
+						
+						+e.office-map.map.js-map-yandex(
+							data-geolocation=""
+							data-zoom=""
+							)
+							ul.map__points.js-map-yandex-points(
+								data-zoom="16"
+								data-c-lat="55.821391"
+								data-c-long="37.728002"
+								)
+								li(
+									data-lat="55.821391"
+								 	data-long="37.728002"
+								 	data-title="г. Москва, ул.Пермская, д.11, стр.5, офис 621"
+									)  
+							.map__area.js-map-yandex-area  
+										
+					+e.requisites
+						+e.H2.sec-title Реквизиты
+						+e.requisites-row.row
+							+e.requisites-col.col-12.col-lg-3
+								+e.requisites-text.text
+									| Наименование: D&S Fashion
+									br
+									| ИНН: 1111111111
+									br
+									| ККП: 222222222
+
+							+e.requisites-col.col-12.col-lg-3
+								+e.requisites-text.text
+									| БИК: 333333333
+									br
+									| Корр.счет: 444444444444444
+									br
+									| ИНН: 1111111111
+
+							+e.requisites-col.col-12.col-lg-3
+								+e.requisites-text.text
+									| Наименование: D&S Fashion
+									br
+									| ИНН: 1111111111
+									br
+									| ККП: 222222222
+
+							+e.requisites-col.col-12.col-lg-3
+								+e.requisites-text.text
+									| БИК: 333333333
+									br
+									| Корр.счет: 444444444444444
+									br
+									| ИНН: 1111111111
+
+					
+
+
+							
+

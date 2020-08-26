@@ -13,3 +13,13 @@ mixin articleListingItem(name, image, width, height)
 			+e.IMG.img(src=image alt=name width=width height=height)
 		+e.SPAN.main
 			+e.SPAN.title= name
+
+
+mixin smallArticle(name, image, width, height)
+	+b.A.small-article(href="#")&attributes(attributes)
+		+e.SPAN.img-wrap
+			+e.IMG.img(src=image alt=name width=width height=height)
+		+e.SPAN.main
+			+e.SPAN.title= name
+
+

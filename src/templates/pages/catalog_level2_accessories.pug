@@ -1,0 +1,60 @@
+extends ../layouts/default
+include ../helpers/mixins
+
+block variables
+	- const title = "catalog_level2_accessories"
+
+block content
+	main.main
+		+b.p-catalog
+			.container
+				+e.SECTION.category-slider
+					+categorySlider
+
+				.breadcrumbs-block
+					+breadcrumbs(['Каталог'], 'фурнитура')
+
+				+e.SECTION.main
+					+e.top
+						.row
+							+e.main-col-nav.col-12.col-lg-3
+								+catalogNav('accessories')
+							+e.main-col-items.col-12.col-lg-9
+								+e.H1.title фурнитура
+
+								+e.items
+									+e.items-row.row
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Молнии', 'img/content/catalog-category-3.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Пулеры, слайдеры', 'img/content/catalog-category-4.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Кнопки', 'img/content/catalog-category-5.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Пуговицы', 'img/content/catalog-category-6.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Шнуры', 'img/content/catalog-category-7.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Фиксаторы', 'img/content/catalog-category-8.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Концевики', 'img/content/catalog-category-9.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Броши', 'img/content/catalog-category-10.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Рамки', 'img/content/catalog-category-11.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Пряжки', 'img/content/catalog-category-12.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Застежки', 'img/content/catalog-category-13.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Цепи-вешалки', 'img/content/catalog-category-14.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Шевроны', 'img/content/catalog-category-15.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Разное', 'img/content/catalog-category-16.png')
+										
+
+				+sectionInf()
+
+				+sectionWhyUs()
+

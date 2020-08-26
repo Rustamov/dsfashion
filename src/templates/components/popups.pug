@@ -1,0 +1,185 @@
+mixin popupOrder()
+    +b.popup#popup-order
+        +e.form
+            form.js-validate(action="#" autocomplete="off")
+                // add class "is-form-sent" after sent form
+                +e.form-main
+                    +e.title
+                        +dualTitle('h2', 'Оставить ', 'заявку', '--theme-white-black').--popup
+
+                    +e.text.text
+                        b Не теряйте время в поисках, 
+                        | просто оставьте заявку и мы поможем вам в выборе!
+
+
+                    +e.fields
+                        +e.fields-item
+                            label.input-text
+                                input.input-text__field(type="text" name="Name")
+                                span.input-text__placeholder Ваше имя
+
+                        +e.fields-item
+                            label.input-text
+                                input.input-text__field(type="tel" name="tel" required="" data-parsley-ru-phone)
+                                span.input-text__placeholder 
+                                    | Телефон 
+                                    i.imp-sign *
+                        
+                        +e.fields-item
+                            label.input-text
+                                textarea.input-text__field(name="Message" rows="4")
+                                span.input-text__placeholder Ваши пожелания или вопросы
+                    
+                    +e.form-required-mesage
+                        i.imp-sign * 
+                        | — обязательно для заполнения
+
+                    +e.form-agree
+                        span.checkbox-wrap
+                            label.checkbox
+                                input.checkbox__input(type="checkbox" name="Согласие на обработку данных" value="Да" checked="" required="" data-parsley-error-message="Нужно согласие на обработку данных" data-parsley-multiple="Согласие на обработку данных")
+                                i.checkbox__icon
+                                span.checkbox__text
+                                    | Принимаю 
+                                    a(href="#").link.link--theme-red политику конфиденциальности
+
+                    +e.submit
+                        +buttonRedL('Отправить', 'button')(type="submit")
+
+                +e.succeed
+                    +e.succeed-icon
+                        +icon('round-check-mark')
+                    
+                    +e.succeed-title 
+                        +dualTitle('h2', 'Ваша заявка ', 'принята!', '--theme-white-black').--popup
+
+                    +e.succeed-text.text
+                        b Наш менеджер перезвонит вам 
+                        | в самое ближайшее время
+
+                    +e.succeed-button
+                        +buttonRedL('Ок', 'button')(type="button" data-fancybox-close)
+
+
+mixin popupCallback()
+    +b.popup#popup-callback
+        +e.form
+            form.js-validate(action="#" autocomplete="off")
+                // add class "is-form-sent" after sent form
+                +e.form-main
+                    +e.title
+                        +dualTitle('h2', 'Заказать', 'обратный звонок', '--theme-white-black').--popup.--popup-callback
+
+                    +e.text.text
+                        b Не теряйте время в поисках, 
+                        | просто оставьте заявку и мы поможем вам в выборе!
+
+
+                    +e.fields
+                        +e.fields-item
+                            label.input-text
+                                input.input-text__field(type="text" name="Name")
+                                span.input-text__placeholder Ваше имя
+
+                        +e.fields-item
+                            label.input-text
+                                input.input-text__field(type="tel" name="tel" required="" data-parsley-ru-phone)
+                                span.input-text__placeholder 
+                                    | Телефон 
+                                    i.imp-sign *
+                        
+                    +e.form-required-mesage
+                        i.imp-sign * 
+                        | — обязательно для заполнения
+
+                    +e.form-agree
+                        span.checkbox-wrap
+                            label.checkbox
+                                input.checkbox__input(type="checkbox" name="Согласие на обработку данных" value="Да" checked="" required="" data-parsley-error-message="Нужно согласие на обработку данных" data-parsley-multiple="Согласие на обработку данных")
+                                i.checkbox__icon
+                                span.checkbox__text
+                                    | Принимаю 
+                                    a(href="#").link.link--theme-red политику конфиденциальности
+
+                    +e.submit
+                        +buttonRedL('Отправить', 'button')(type="submit")
+
+                +e.succeed
+                    +e.succeed-icon
+                        +icon('round-check-mark')
+                    
+                    +e.succeed-title 
+                        +dualTitle('h2', 'Ваша заявка ', 'принята!', '--theme-white-black').--popup
+
+                    +e.succeed-text.text
+                        b Наш менеджер перезвонит вам 
+                        | в самое ближайшее время
+
+                    +e.succeed-button
+                        +buttonRedL('Ок', 'button')(type="button" data-fancybox-close)
+
+
+mixin popupOrderSucceed()
+    +b.popup#popup-order
+        +e.form
+            form.js-validate.is-form-sent(action="#" autocomplete="off")
+                // add class "is-form-sent" after sent form
+                +e.form-main
+                    +e.title
+                        +dualTitle('h2', 'Оставить ', 'заявку', '--theme-white-black').--popup
+
+                    +e.text.text
+                        b Не теряйте время в поисках, 
+                        | просто оставьте заявку и мы поможем вам в выборе!
+
+
+                    +e.fields
+                        +e.fields-item
+                            label.input-text
+                                input.input-text__field(type="text" name="Name")
+                                span.input-text__placeholder Ваше имя
+
+                        +e.fields-item
+                            label.input-text
+                                input.input-text__field(type="tel" name="tel" required="" data-parsley-ru-phone)
+                                span.input-text__placeholder 
+                                    | Телефон 
+                                    i.imp-sign *
+                        
+                        +e.fields-item
+                            label.input-text
+                                textarea.input-text__field(name="Message" rows="4")
+                                span.input-text__placeholder Ваши пожелания или вопросы
+                    
+                    +e.form-required-mesage
+                        i.imp-sign * 
+                        | — обязательно для заполнения
+
+                    +e.form-agree
+                        span.checkbox-wrap
+                            label.checkbox
+                                input.checkbox__input(type="checkbox" name="Согласие на обработку данных" value="Да" checked="" required="" data-parsley-error-message="Нужно согласие на обработку данных" data-parsley-multiple="Согласие на обработку данных")
+                                i.checkbox__icon
+                                span.checkbox__text
+                                    | Принимаю 
+                                    a(href="#").link.link--theme-red политику конфиденциальности
+
+                    +e.submit
+                        +buttonRedL('Отправить', 'button')(type="submit")
+
+                +e.succeed
+                    +e.succeed-icon
+                        +icon('round-check-mark')
+                    
+                    +e.succeed-title 
+                        +dualTitle('h2', 'Ваша заявка ', 'принята!', '--theme-white-black').--popup
+
+                    +e.succeed-text.text
+                        b Наш менеджер перезвонит вам 
+                        | в самое ближайшее время
+
+                    +e.succeed-button
+                        +buttonRedL('Ок', 'button')(type="button" data-fancybox-close)
+
+
+

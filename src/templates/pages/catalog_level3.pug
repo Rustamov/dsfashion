@@ -1,0 +1,41 @@
+extends ../layouts/default
+include ../helpers/mixins
+
+block variables
+	- const title = "catalog_level3"
+
+block content
+	main.main
+		+b.p-catalog
+			.container
+				+e.SECTION.category-slider
+					+categorySlider
+
+				.breadcrumbs-block
+					+breadcrumbs(['Каталог', 'Женская коллекция'], 'Плащевые ткани')
+
+				+e.SECTION.main
+					+e.top
+						.row
+							+e.main-col-nav.col-12.col-lg-3
+								+catalogNav('level3')
+							+e.main-col-items.col-12.col-lg-9
+								+e.H1.title Плащевые ткани
+
+								+e.items
+									+e.items-row.row
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('icon', 'Новинки', 'img/content/catalog-category-29.png')
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('full', 'Трикотаж', 'img/content/catalog-category-30.jpg', 262, 170)
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('full', 'Ворсовые шерстяные', 'img/content/catalog-category-31.jpg', 262, 170)
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('full', 'Ворсовые поливискозные', 'img/content/catalog-category-32.jpg', 262, 170)
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('full', 'Твид', 'img/content/catalog-category-33.jpg', 262, 170)
+
+				+sectionInf()
+
+				+sectionWhyUs()
+

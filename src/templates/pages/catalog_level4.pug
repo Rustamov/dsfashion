@@ -1,0 +1,42 @@
+extends ../layouts/default
+include ../helpers/mixins
+
+block variables
+	- const title = "catalog_level4"
+
+block content
+	main.main
+		+b.p-catalog
+			.container
+				+e.SECTION.category-slider
+					+categorySlider
+
+				.breadcrumbs-block
+					+breadcrumbs(['Каталог', 'Женская коллекция', 'Пальтовые ткани'], 'Трикотаж')
+
+				+e.SECTION.main
+					+e.top
+						.row
+							+e.main-col-nav.col-12.col-lg-3
+								+catalogNav('level4')
+							+e.main-col-items.col-12.col-lg-9
+								+e.H1.title Трикотаж
+
+								+e.items
+									+e.items-row.row
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('full', 'Вареная шерсть', 'img/content/catalog-category-34.jpg', 262, 170)
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('full', 'Букле', 'img/content/catalog-category-35.jpg', 262, 170)
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('full', 'Ворсовые', 'img/content/catalog-category-36.jpg', 262, 170)
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('full', 'Клетка', 'img/content/catalog-category-37.jpg', 262, 170)
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('full', 'Жаккард', 'img/content/catalog-category-38.jpg', 262, 170)
+										+e.items-col.col-6.col-md-4
+											+catalogListingCategory('full', 'Остальные', 'img/content/catalog-category-39.jpg', 262, 170)
+
+				+sectionInf()
+
+				+sectionWhyUs()

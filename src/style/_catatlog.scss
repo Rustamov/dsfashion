@@ -27,12 +27,18 @@
             position: relative;
             display: block;
             width: 100%;
-            height: 240px;
+            min-height: 150px;
             margin: 0 0 30px;
             overflow: hidden;
             border-radius: 3px;
             box-shadow: 0px 12px 21px 0px rgba(0, 0, 0, 0.11);
             transition: box-shadow 0.2s;
+
+            &::before {
+                content: '';
+                display: block;
+                padding-top: 117.5%;
+            }
 
             #{$b}.is-current & {
                box-shadow: 0px 12px 41px 0px rgba(0, 0, 0, 0.31);
@@ -41,11 +47,19 @@
             @include hoverParent($b) {
                box-shadow: 0px 12px 41px 0px rgba(0, 0, 0, 0.31);
             }
+            
 
               
         }
 
         @include fill-img;
+
+        transition: transform 0.3s;
+        transform: scale(1);
+
+        @include hoverParent($b) {
+            transform: scale(1.05);
+        }
     }
 
     &__title {
@@ -85,7 +99,7 @@
     &__slider {
         
         @include screen(xs) {
-            margin: 0 -45px 0; //by don`t cut image shadow
+            @include rule(margin, (xs: 0 -40px, lg: 0 -45px)); //by don`t cut image shadow
             // border: 1px solid #000;
             .slick-list {
                 padding: 0 30px;
@@ -94,7 +108,63 @@
 
         &-item {
             text-align: center;
-            padding: 0 15px;
+            @include rule(padding, (xs: 0 10px, lg: 0 15px));
+
+            transition: opacity 0.3s;
+            &:not(.slick-slide):not(:first-child) {
+                display: none;
+            }
+            &:not(.slick-active) {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+
+.items-block {
+    $b: &;
+    
+    &__top {
+        @include rule(margin-bottom, (xs: 40px, lg: 60px));
+        
+        &-row {
+            flex-wrap: nowrap;
+            align-items: center;
+            @include rule(flex-direction, (xs: column, md: row));
+            @include rule(justify-content, (xs: center, md: space-between));
+        }
+
+        &-col-title {
+            @include rule(margin-bottom, (xs: 20px, md: 0px));
+        }
+    }
+
+    &__controls {
+        display: flex;
+        align-items: center;
+
+        &-right {
+            margin-left: 10px;
+        }
+    }
+
+    &__slider {
+        
+        @include screen(xs) {
+            @include rule(margin, (xs: 0 -40px 0, lg: 0 -45px 0)); //by don`t cut image shadow
+            // border: 1px solid #000;
+            .slick-list {
+                padding: 0 30px;
+            }
+        }
+        .slick-track {
+            padding-bottom: 40px;
+        }
+        
+        &-item {
+            text-align: center;
+            @include rule(padding, (xs: 0 10px 30px, lg: 0 15px 40px));
             transition: opacity 0.3s;
             &:not(.slick-slide):not(:first-child) {
                 display: none;
@@ -122,11 +192,11 @@
         @extend .link-resset;
         display: flex;
         align-items: center;
-        color: #fff;
+        color: #000;
         transition: color 0.2s;
 
         @include hover {
-            color: $color3;
+            color: $color1;
         }
     }
 
@@ -159,7 +229,7 @@
         padding: 0 10px 0 0;
         font-family: $ffOswald;
         font-weight: 300;
-        font-size: 24px;
+        @include rule(font-size, (xs: 20px, xl: 24px));
         line-height: 1.25;
     }
 
@@ -179,8 +249,8 @@
             height: 9px;
             margin-left: -5px;
             margin-top: -6px;
-            border-right: 1px solid #fff;
-            border-bottom: 1px solid #fff;
+            border-right: 1px solid $color1;
+            border-bottom: 1px solid $color1;
             background: none;
             transform: rotate(45deg);
         }
@@ -291,6 +361,63 @@
         
     }
 
+    &__lv3 {
+        &-dropdown {
+            margin: 0;
+            padding: 0;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.2s, margin-top 0.4s, opacity 0.2s;
+                
+            #{$b}__lv2-item.is-open & {
+                max-height: 1000px;
+                opacity: 1;
+            }
+        }
+
+        &-list {
+            @extend .list-resset;
+            padding: 15px 0 5px 18px;
+        }
+        &-item {
+            &:not(:last-child) {
+              margin-bottom: 13px;  
+            }
+        }
+        &-link {
+            @extend .link-resset;
+            width: 100%;
+            display: flex;
+            align-items: start;
+            font-family: $ffRoboto;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 1.25;
+            color: #000;
+            transition: color 0.2s;
+
+            @include hover {
+                color: $color1;
+            }
+            &.is-current {
+                color: $color1;
+            }
+        }
+
+        &-mark {
+            margin-top: -1px;
+            margin-right: 8px;
+        }
+        &-name {
+            max-width: calc(100% - 17px);
+            overflow-wrap: break-word;
+
+        }
+
+        
+    }
+
 }
 
 
@@ -306,6 +433,7 @@
     margin: 0;
     padding: 0;
     color: #000;
+    text-align: left;
     border-radius: 3px;
     box-shadow: 0px 12px 29px 0px rgba(88, 43, 0, 0.17);
     transition: color 0.2s,  box-shadow 0.2s;
@@ -322,32 +450,46 @@
             position: relative;
             display: block;
             width: 100%;
-            height: 240px;
+            // @include rule(height, (xs: 180px, lg: 240px));
+            min-height: 150px;
             margin: 0;
             overflow: hidden;
             border-radius: 3px;
+            &::before {
+                content: '';
+                display: block;
+                padding-top: 91.7%;
+            }
         }
 
         @include fill-img;
+        transition: transform 0.3s;
+        transform: scale(1);
+
+        @include hoverParent($b) {
+            transform: scale(1.05);
+        }
+
     }
 
     &__main {
         display: block;
-        padding: 22px 20px;
+        @include rule(padding, (xs: 20px 10px, lg: 22px 20px));
     }
     
     &__title {
         display: block;
         margin: 0 0 15px;
         font-family: $ffOswald;
-        font-size: 22px;
+        // font-size: 22px;
+        @include rule(font-size, (xs: 20px, lg: 22px));
         line-height: calc(29/22);
         font-weight: 300;
     }
 
     &__props {
         display: block;
-        font-size: 14px;
+        @include rule(font-size, (xs: 12px, lg: 14px));
         
         &-item {
             display: flex;
@@ -359,7 +501,7 @@
         }
 
         &-name {
-            min-width: 60px;
+            @include rule(min-width, (xs: 50px, lg: 60px));
             margin-right: 7px;
             font-weight: 700;
         }
@@ -389,3 +531,460 @@
     }
 
 }
+
+
+.listing-category {
+    $b: &;
+   
+    @extend .link-resset;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    max-width: 265px;
+    margin: 0;
+    padding: 0;
+    color: #000;
+    border-radius: 3px;
+    box-shadow: 0px 12px 29px 0px rgba(88, 43, 0, 0.17);
+    transition: color 0.2s,  box-shadow 0.2s;
+    
+    @include hover {
+        color: #000;
+        box-shadow: 0px 12px 29px 0px rgba(88, 43, 0, 0.27);
+    }
+
+   
+
+    &__img {
+        &-wrap {
+            
+            position: relative;
+            display: block;
+            width: 100%;
+            
+            margin: 0;
+            overflow: hidden;
+            border-radius: 3px;
+
+            &::before {
+                content: '';
+                display: block;
+                padding-top: 61%;
+            }
+            
+            &--icon {
+                // display: flex;
+                // justify-content: center;
+                // align-items: center;
+                // padding: 15px 10px;
+            }
+
+        }
+
+        &-inner {
+
+        }
+
+        transition: transform 0.3s;
+        
+        &--icon {
+            max-width: calc(100% - 30px);
+            max-height: calc(100% - 20px);
+            width: auto;
+            height: auto;
+            @include center-block();
+
+            @include hoverParent($b) {
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+        &--full {
+            @include fill-img;
+
+            @include hoverParent($b) {
+                transform: scale(1.05);
+            }
+        }
+
+        transform: scale(1);
+
+        
+    }
+
+    &__main {
+        display: flex;
+        min-height: 78px;
+        padding: 8px 15px;
+        align-items: center;
+    }
+    
+    &__title {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        font-family: $ffOswald;
+        @include rule(font-size, (xs: 18px, lg: 22px));
+        line-height: calc(29/22);
+        font-weight: 300;
+    }
+}
+
+
+
+.item {
+    margin: 0;
+    padding: 0;        
+
+    $b: &;
+
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__col-1 {
+        @include rule(width, (xs: 100%, md: 54%));
+        @include rule(margin-right, (xs: 0, md: 6%));
+        @include rule(margin-bottom, (xs: 15px, md: 0));
+    }
+    &__col-2 {
+        @include rule(width, (xs: 100%, md: 40%));
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__big-image {
+        @extend .link-resset;
+        display: block;
+        position: relative;
+        cursor: crosshair;
+
+        &-img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        // $bigImgWrap: &;
+        // &-zoom {
+        //     @extend .hover-zoom;
+        //     color: #fff;
+    
+        //     @include hoverParent($bigImgWrap) {
+        //         opacity: 1;
+        //     }
+        // }
+    }
+
+    &__small-image {
+        @extend .link-resset;
+        display: block;
+        @include rule(max-width, (xs: 85px, xl: 105px));
+
+        position: relative;
+        overflow: hidden;
+        border-radius: 3px;
+        border: 1px solid transparent;
+        box-shadow: 0px 13px 12px -5px rgba(88, 43, 0, 0.17);
+        cursor: pointer;
+
+        .slick-current & {
+            border-color: $color1;
+        }
+        &::after {
+            content: '';
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            transition: opacity 0.2s;
+            background: transparentize(#c68b28, 0.7);
+            
+        }
+        &:hover::after {
+            opacity: 1;
+        }
+
+        &-img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__props {
+        @include rule(order, (xs: 3, md: 1));
+        @extend .border-dashed-red;
+        display: block;
+        margin: 0 0 22px;
+        padding: 0 0 24px;
+        font-family: $ffOswald;
+        font-weight: 300;
+        @include rule(font-size, (xs: 18px, xl: 22px));
+        
+        &-item {
+            display: flex;
+            align-items: center;
+
+            &:not(:last-child) {
+                margin-bottom: 14px;
+            }
+        }
+
+        &-name {
+            min-width: 70px;
+            margin-right: 7px;
+        }
+
+    }
+
+    &__colors {
+        display: flex;
+        align-items: center;
+    }
+
+    &__color {
+        display: flex;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        & + & {
+            margin-left: 7px;
+        }
+
+        &-part {
+            flex-grow: 1;
+        }
+
+    }
+
+    &__button-wrap {
+        @include rule(order, (xs: 4, md: 2));
+
+        @extend .border-dashed-red;
+        display: block;
+        @include rule(margin-bottom, (xs: 0, md: 15px, xl: 25px));
+        padding: 0 0 25px;
+    }
+
+    &__items {
+        margin: 0 0 35px;
+    }
+
+    &__big-slider {
+        .slick-list {
+            overflow: visible;
+        }
+        
+        &-item {
+            padding: 0;
+
+            &:not(.slick-slide):not(:first-child) {
+                display: none;
+            }
+        }
+    }
+
+    &__small-slider {
+        @include rule(order, (xs: 1, md: 3));
+        position: relative;
+        z-index: 0;
+        margin: 0 -5px;
+        @include rule(max-width, (xs: 280px, xl: 350px));
+        @include rule(align-self, (xs: center, md: flex-start));
+
+        .slick-list {
+            // padding: 0 4px;
+        }
+
+        &-item {
+            outline: none;
+            padding: 15px 5px 30px;
+            transition: opacity 0.3s;
+            
+            &:not(.slick-slide):not(:first-child) {
+                display: none;
+            }
+            &:not(.slick-active) {
+                // opacity: 0;
+            }
+        }
+    }
+
+    
+    &__controls {
+        @include rule(order, (xs: 2, md: 4));
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        @include rule(align-self, (xs: center, md: flex-start));
+        @include rule(margin, (xs: -10px 0 20px, md: -10px 0 0));
+
+        &-right {
+            margin-left: 10px;
+        }
+    }
+
+}
+
+.pagination {
+    &__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+        align-items: center;
+
+        li {
+            margin: 0 1px;
+            min-width: 40px;
+            text-align: center;
+            font-family: $ffOswald;
+            @include rule(font-size, (xs: 20px, lg: 22px));
+            font-weight: 300;
+            color: #000;
+
+            a {
+                @extend .link-resset;
+                display: inline-block;	
+                vertical-align: middle;
+                min-width: 40px;
+                height: 40px;
+                text-align: center;
+               
+                line-height: 40px;
+                color: #000;
+                border-radius: 50%;
+                background: transparent;
+                transition: color 0.3s, background 0.3s;
+            }
+    
+            &.current a,
+            a.current,
+            a:hover,
+            a:active {
+                background: $color5;
+                color: $color3;
+                text-decoration: none;
+            }
+
+            &.disabled a,
+            &.disabled span {
+                pointer-events: none;
+                color: $color3;
+            }
+        }
+
+    }
+}
+
+
+
+
+
+.p-catalog {
+    $b: &;
+
+    &__category-slider {
+        margin-bottom: 40px;
+    }
+
+    &__main {
+        @extend .border-dashed-red;
+        @include rule(margin, (xs: 0 0 50px, lg: 0 0 100px));
+        @include rule(padding, (xs: 0 0 50px, lg: 0 0 100px));
+
+        &::after {
+            @include rule(display, (xs: none, lg: block));
+        }
+
+        &-col {
+            &-nav {
+                @include rule(order, (xs: 2, lg: 1));
+            } 
+            &-items {
+                @include rule(order, (xs: 1, lg: 2));
+                @include rule(margin-bottom, (xs: 50px, lg: 0));
+            } 
+        }
+    }
+
+    
+    
+    &__title {
+        @extend .title;
+        display: block;
+        margin: -0.25em 0 40px;
+        color: #fff;
+    }
+
+    &__items {
+        &-row {
+            @extend .listing-row;
+        }
+    }
+}
+
+.p-item {
+    $b: &;
+
+    &__category-slider {
+        margin-bottom: 40px;
+    }
+
+    &__title {
+        @extend .title;
+        display: block;
+        margin: 0 0 40px;
+        color: #fff;
+    }
+    
+    &__card {
+        @extend .border-dashed-red;
+        
+        @include rule(margin, (xs: 0 0 50px, lg: 0 0 100px));
+        @include rule(padding, (xs: 0 0 30px, lg: 0 0 100px));
+
+        @include screen ('lg', 'max') {
+            &::after {
+                content: none;
+                display: none;
+            }
+        }
+        
+
+        &-col {
+            &-nav {
+                @include rule(order, (xs: 3, lg: 1));
+                @include rule(margin-bottom, (xs: 0, lg: 40px));
+
+            }
+            &-item {
+                @include rule(order, (xs: 1, lg: 2));
+                @include rule(margin-bottom, (xs: 35px, lg: 40px));
+            }
+            &-descr {
+                @include rule(order, (xs: 2, lg: 3));
+                @include rule(margin-bottom, (xs: 35px, lg: 0));
+            }
+        }
+
+        &-title {
+            @extend .title;
+            display: block;
+            margin: 0 0 40px;
+            color: #fff;
+        }
+    }
+
+}
+
+
+

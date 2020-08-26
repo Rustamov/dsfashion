@@ -1,0 +1,31 @@
+extends ../layouts/default
+include ../helpers/mixins
+
+block variables
+	- const title = "new_collection_unregistered"
+	- const bodyClass = "body--bg-top-small"
+
+block content
+	main.main.main--pt-40
+		+b.p-def
+			.container
+				.breadcrumbs-block
+					+breadcrumbs([], 'Новая коллекция')
+
+				+b.page-title
+					+dualTitle('h1', 'Новая', 'коллекция')
+
+
+				+b.SECTION.collection-empty
+					+e.row.row
+						+e.col-text.col-auto
+							+e.text.text
+								p
+									| Новая коллекция доступна только зарегистрированным пользователям. 
+									b Присоединяйтесь к нам! 
+									| Уже зарегистрированы? 
+									a(href="authorization.html") Войти на сайт
+
+						+e.col-button.col-auto
+							+buttonRedL('Зарегистрироваться', 'a', 'l')(href="registration.html")
+

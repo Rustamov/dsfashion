@@ -221,7 +221,8 @@ div {
   margin: auto;
   object-fit: cover;
   font-family: 'object-fit: cover;';
-  width: 0;
+  width: auto;
+  height: auto;
   min-width: 100%;
   min-height: 100%;
 }

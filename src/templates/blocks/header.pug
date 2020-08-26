@@ -1,5 +1,25 @@
+mixin headerLogo()
+	+b.A.header-logo(href="#")&attributes(attributes)
+		+e.inner
+			+e.IMG.img(src="/img/logo.png")
+
+mixin headerEmail()
+	+b.header-mail&attributes(attributes)
+		+e.SPAN.text&attributes(attributes) Пишите нам
+		+e.A.link(href="mailto:info@dsfashion.ru")&attributes(attributes) info@dsfashion.ru
+
+mixin headerCallback()
+	+b.header-callback
+		+e.A.number(href="tel:+74955553535") + 7 (495) 555-35-35
+		+e.A.popup.js-popup(href="#popup-callback") Заказать обратный звонок
+
+mixin headerCallbackMobile()
+	+b.header-callback.--mobile-menu
+		+e.A.number(href="tel:+74955553535").--mobile-menu + 7 (495) 555-35-35
+		+e.A.popup.--mobile-menu.js-popup(href="#popup-callback") Заказать обратный звонок
+
 mixin header-nav()
-	+b.NAV.header-nav
+	+b.NAV.header-nav&attributes(attributes)
 		+e.UL.list
 			+e.LI.item
 				+e.A.link(href="#") О компании
@@ -13,22 +33,47 @@ mixin header-nav()
 				+e.A.link(href="#") Контакты
 
 mixin header-search()
-	.header-seacrh
+	.header-seacrh&attributes(attributes)
 		form(action="/search" autocomplete="off")
 			input.input-text.header-seacrh__input(type="search" name="q" placeholder="Поиск")
 			button.header-seacrh__submit(type="submit")
 				i.header-seacrh__submit-icon
 					+icon('search')
 
+mixin mobile-menu()
+	+b.NAV.mobile-menu&attributes(attributes)
+		+e.content
+			+e.content-inner
+				+e.content-container.container
+					+e.logo
+						+headerLogo()
+					+e.nav
+						+header-nav()
+					+e.catalog-nav
+						+catalogNav()
+					+e.email
+						+headerEmail().--mobile-menu
+					+e.callback
+						+headerCallbackMobile
+					+e.user-link
+						+user-link.--mobile-menu
+					+e.order-btn
+						+buttonYellow('Оставить заявку', 'a').header__order-btn.js-popup(href="#popup-order")
 
+
+		+e.BUTTON.trigger.js-mobile-menu-trigger(type="button" name="trigger")
+			+e.SPAN.trigger-icon
+				+e.I.trigger-icon-line.--first
+				+e.I.trigger-icon-line.--second
+				+e.I.trigger-icon-line.--third
+
+	
 +b.HEADER.header
 	.container
 		+e.top
 			+e.top-row.row
 				+e.top-col-logo.col-auto
-					+b.A.header-logo
-						+e.inner
-							+e.IMG.img(src="/img/logo.png")
+					+headerLogo()
 
 				+e.top-col-hr.col-auto
 					+e.SPAN.top-hr
@@ -40,18 +85,12 @@ mixin header-search()
 				+e.top-col-hr.col-auto
 					+e.SPAN.top-hr
 				+e.top-col-email.col-auto
-					+b.header-mail
-						+e.SPAN.text Пишите нам
-						+e.A.link(href="mailto:info@dsfashion.ru") info@dsfashion.ru
-
+					+headerEmail()
+					
 				+e.top-col-hr.col-auto
 					+e.SPAN.top-hr
 				+e.top-col-callback.col-auto
-					+b.header-callback
-						//- +e.number
-						+e.A.number(href="tel:+74955553535") + 7 (495) 555-35-35
-						//- +e.popup
-						+e.A.popup.js-popup(href="#popup-callback") Заказать обратный звонок
+					+headerCallback
 
 				+e.top-col-hr.col-auto
 					+e.SPAN.top-hr
@@ -59,7 +98,8 @@ mixin header-search()
 					+e.top-user-link
 						+user-link
 					+e.top-order-btn
-						+buttonYellow('Оставить заявку').header__order-btn
+						+buttonYellow('Оставить заявку', 'a').header__order-btn.js-popup(href="#popup-order")
+
 
 		+e.nav-line
 			+e.nav-line-row.row
@@ -68,50 +108,7 @@ mixin header-search()
 
 				+e.nav-line-col-search.col-auto
 					+header-search
-
 				
-				//- +e.nav-line-col-mobile-menu.col-auto
-				//- 	+b.NAV.mobile-menu
-				//- 		+e.content
-				//- 			+e.content-inner
-				//- 				+e.content-container
-				//- 					.container
-				//- 						+e.nav
-				//- 							nav.header-nav
-				//- 								ul.header-nav__list
-				//- 									li.header-nav__item
-				//- 										a.header-nav__link(href="#") О компании
-				//- 									li.header-nav__item
-				//- 										a.header-nav__link(href="#") Клиенты
-				//- 									li.header-nav__item
-				//- 										a.header-nav__link(href="#") Отзывы
-				//- 									li.header-nav__item
-				//- 										a.header-nav__link(href="#") Кейсы
-				//- 									li.header-nav__item
-				//- 										a.header-nav__link(href="#") Цены
-				//- 									li.header-nav__item
-				//- 										a.header-nav__link(href="#") Контакты
-				//- 						+e.numbers
-				//- 							span.header-numbers
-				//- 								span.header-numbers__icon.icon
-				//- 									svg(width="12" height="12")
-				//- 										use(xlink:href="/img/svg/sprite.svg#icon-phone")
-				//- 								span.header-numbers__links
-				//- 									a.header-numbers__link(href="tel:8-123-456-78-90") 8-123-456-78-90
-				//- 									span.header-numbers__second-number
-				//- 										| , 
-				//- 										a.header-numbers__link(href="tel:8-321-654-00-01") 8-321-654-00-01
-				//- 						+e.email
-				//- 							a.header-mail(href="mailto:info@email.ru")
-				//- 								span.header-mail__icon.icon
-				//- 									svg(width="18" height="12")
-				//- 										use(xlink:href="/img/svg/sprite.svg#icon-mail")
-				//- 								span.header-mail__text info@email.ru
-				//- 						+e.button
-				//- 							a.btn.btn--geom-def.btn--theme-red.js-popup(href="#popup-callback") Заказать звонок
-				//- 		+e.BUTTON.trigger.js-mobile-menu-trigger(type="button" name="trigger")
-				//- 			+e.SPAN.trigger-icon
-				//- 				+e.I.trigger-icon-line.--1
-				//- 				+e.I.trigger-icon-line.--2
-				//- 				+e.I.trigger-icon-line.--3
-
+				+e.nav-line-col-mobile-menu.col-auto
+					+mobile-menu
+					

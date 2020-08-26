@@ -40,25 +40,32 @@
         }
 
         @include fill-img;
+        transition: transform 0.3s;
+        transform: scale(1);
+
+        @include hoverParent($b) {
+            transform: scale(1.05);
+        }
     }
 
     &__main {
         display: block;
-        padding: 32px 0 35px;
+        @include rule(padding, (xs: 22px 0 25px, lg: 32px 0 35px));
+
     }
     
     &__title {
         display: block;
-        margin: 0 0 28px;
+        @include rule(margin, (xs: 0 0 20px, lg: 0 0 28px));
         font-family: $ffOswald;
-        font-size: 43px;
+        @include rule(font-size, (xs: 30px, lg: 43px));
         line-height: 1.25;
         font-weight: 300;
     }
 
     &__text {
         display: block;
-        font-size: 18px;
+        @include rule(font-size, (xs: 14px, lg: 18px));
     }
 
 }
@@ -104,19 +111,91 @@
         }
 
         @include fill-img;
+        transition: transform 0.3s;
+        transform: scale(1);
+
+        @include hoverParent($b) {
+            transform: scale(1.05);
+        }
     }
 
     &__main {
         display: block;
-        padding: 32px 0 35px;
+        @include rule(padding, (xs: 22px 0 25px, lg: 32px 0 35px));
     }
     
     &__title {
         display: block;
         margin: 0;
         font-family: $ffOswald;
-        font-size: 22px;
+        @include rule(font-size, (xs: 18px, lg: 22px));
         line-height: calc(29/22);
+        font-weight: 300;
+    }
+
+}
+
+.small-article {
+    $b: &;
+   
+    @extend .link-resset;
+    @extend .border-dashed-red;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 18px 0;
+    color: #000;
+    
+    @include hover {
+        color: #000;
+    }
+
+   
+
+    &__img {
+        &-wrap {
+            position: relative;
+            display: block;
+            width: 165px;
+            flex-shrink: 0;
+            margin: 0;
+            overflow: hidden;
+            box-shadow: 0px 12px 29px 0px rgba(88, 43, 0, 0.17);
+            transition: box-shadow 0.2s;
+
+            @include hoverParent($b) {
+                box-shadow: 0px 12px 29px 0px rgba(88, 43, 0, 0.27);
+            }
+            
+            &::before {
+                content: '';
+                display: block;
+                padding-top: 75%;
+            }
+        }
+
+        @include fill-img;
+        transition: transform 0.3s;
+        transform: scale(1);
+
+        @include hoverParent($b) {
+            transform: scale(1.05);
+        }
+    }
+
+    &__main {
+        display: block;
+        padding: 0 0 0 30px;
+        @include rule(padding, (xs: 0 0 0 15px, xl: 0 0 0 30px));
+    }
+    
+    &__title {
+        display: block;
+        margin: 0;
+        font-family: $ffOswald;
+        @include rule(font-size, (xs: 16px, xl: 19px));
+        line-height: calc(29/19);
         font-weight: 300;
     }
 

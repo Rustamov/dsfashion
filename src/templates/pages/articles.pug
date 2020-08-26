@@ -1,0 +1,100 @@
+extends ../layouts/default
+include ../helpers/mixins
+
+block variables
+	- const title = "articles"
+	- const bodyClass = "body--bg-top-small"
+
+block content
+	main.main.main--pt-40
+		+b.p-def
+			.container
+				.breadcrumbs-block
+					+breadcrumbs([], 'Статьи')
+
+				+b.page-title
+					+e.H1.__text Статьи
+
+				
+				+b.SECTION.articles
+					+e.items
+						+e.items-row.row
+							+e.items-col.col-12.col-lg-4
+								+articleListingItem(
+									'Как правильно выбрать ткань для мужской демисезонtной куртки: лучшие советы', 
+									'img/content/article-item-0.jpg', 
+									'360',
+									'270'
+								)
+
+							+e.items-col.col-12.col-lg-4
+								+articleListingItem(
+									'Будь в тренде! Советы от стилистов на лето 2020', 
+									'img/content/article-item-1.jpg', 
+									'360',
+									'270'
+								)
+
+							+e.items-col.col-12.col-lg-4
+								+articleListingItem(
+									'Многообразие тканей: какую выбрать именно вам под конкретные цели', 
+									'img/content/article-item-2.jpg', 
+									'360',
+									'270'
+								)
+
+
+							+e.items-col.col-12.col-lg-4
+								+articleListingItem(
+									'Как правильно выбрать ткань для мужской демисезонtной куртки: лучшие советы', 
+									'img/content/article-item-0.jpg', 
+									'360',
+									'270'
+								)
+
+							+e.items-col.col-12.col-lg-4
+								+articleListingItem(
+									'Будь в тренде! Советы от стилистов на лето 2020', 
+									'img/content/article-item-1.jpg', 
+									'360',
+									'270'
+								)
+
+							+e.items-col.col-12.col-lg-4
+								+articleListingItem(
+									'Многообразие тканей: какую выбрать именно вам под конкретные цели', 
+									'img/content/article-item-2.jpg', 
+									'360',
+									'270'
+								)
+
+
+							+e.items-col.col-12.col-lg-4
+								+articleListingItem(
+									'Как правильно выбрать ткань для мужской демисезонtной куртки: лучшие советы', 
+									'img/content/article-item-0.jpg', 
+									'360',
+									'270'
+								)
+
+							+e.items-col.col-12.col-lg-4
+								+articleListingItem(
+									'Будь в тренде! Советы от стилистов на лето 2020', 
+									'img/content/article-item-1.jpg', 
+									'360',
+									'270'
+								)
+
+							+e.items-col.col-12.col-lg-4
+								+articleListingItem(
+									'Многообразие тканей: какую выбрать именно вам под конкретные цели', 
+									'img/content/article-item-2.jpg', 
+									'360',
+									'270'
+								)
+
+
+							
+
+					+pagination()
+

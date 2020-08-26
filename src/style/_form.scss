@@ -9,107 +9,127 @@
     color: $color5;
     text-align: inherit;
     pointer-events: none;
-  }
-  
-  textarea {
-    resize: vertical;
-  }
-  
-  $inputTextPdLeft: 22px;
-  .input-text {
+}
+
+textarea {
+  resize: vertical;
+}
+
+$inputTextPdLeft: 22px;
+.input-text {
+  $b: &;
+
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  text-align: left;
+
+  &__label {
     display: block;
-    position: relative;
+    @include rule(margin, (xs: 0 0 10px, lg: 0 0 15px));
+    font-family: $ffOswald;
+    @include rule(font-size, (xs: 18px, lg: 22px));
+    line-height: 1.3;
+    font-weight: 300;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &__field {
+    display: block;
+    width: 100%;
     margin: 0;
-    padding: 0;
-    font-size: 16px;
-    text-align: left;
-  
-    &__field {
-      display: block;
-      width: 100%;
-      margin: 0;
-      padding: 15px 20px 16px $inputTextPdLeft;
-      font-size: inherit;
-      line-height: 1.2;
-      font-weight: 400;
-      text-align: inherit;
-      color: inherit;
-      border: 1px solid transparent;
-      background: #fff;
-      outline: none;
+    padding: 15px 20px 16px $inputTextPdLeft;
+    font-size: inherit;
+    line-height: 1.2;
+    font-weight: 400;
+    text-align: inherit;
+    color: inherit;
+    border: 1px solid transparent;
+    background: #fff;
+    outline: none;
+    box-shadow: inset 0px 3px 3px 0px rgba(0, 0, 0, 0.06);
+    border-radius: 3px;
+    transition: color 0.2s, border 0.2s;
+
+    &:hover,
+    &:focus {
       box-shadow: inset 0px 3px 3px 0px rgba(0, 0, 0, 0.06);
-      border-radius: 3px;
-      transition: color 0.2s, border 0.2s;
-  
-      &:hover,
-      &:focus {
-        box-shadow: inset 0px 3px 3px 0px rgba(0, 0, 0, 0.06);
-        outline: none;
-        border-color: rgb(199, 140, 41);
-      }
-  
-      &.parsley-error {
-        border-color: $color5;
-      }
-  
-      &::-ms-clear {
-        display: none;
-      }
-  
-      &::placeholder {
-        color: inherit;
-        opacity: 0.7;
-      }
-  
+      outline: none;
+      border-color: rgb(199, 140, 41);
     }
 
-      
-    &__placeholder {
-      position: absolute;
-      height: auto;
-      top: 15px;
-      left: 0;
-      right: 0;
-      padding: 0 $inputTextPdLeft;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      text-align: inherit;
-      font-style: normal;
-      pointer-events: none;
-      color: #a1a0a0;
-      transform-origin: 0% 0%;
-      transition: transform 0.2s, opacity 0.2s;
-      
-      .input-text--dirty & {
-        text-shadow: 1px 1px #000;
-        opacity: 0;
-        transform: translate(20px, 2px) scale(0.8);
-      }
-        
-      .parsley-error ~ & {
-        color: $color5;
-      }
-  
+    &.parsley-error {
+      border-color: $color5;
     }
-  
-    & .parsley-errors-list {
-      display: flex;
-      align-items: center;
-      top: 6px;
-      right: 6px;
-      bottom: 6px;
-      padding: 3px 10px;
-      text-align: left;
-      left: auto;
-      max-width: 36%;
-      overflow: hidden;
-      color: #fff;
-      background: $color5;
-      border-radius: 3px;
-    }    
-   
+
+    &::-ms-clear {
+      display: none;
+    }
+
+    &::placeholder {
+      color: inherit;
+      opacity: 0.7;
+    }
+
   }
+
+    
+  &__placeholder {
+    position: absolute;
+    height: auto;
+    top: 17px;
+    left: 0;
+    right: 0;
+    padding: 0 $inputTextPdLeft;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: inherit;
+    font-style: normal;
+    pointer-events: none;
+    color: #a1a0a0;
+    transform-origin: 0% 0%;
+    transition: transform 0.2s, opacity 0.2s;
+    
+    .input-text--dirty & {
+      text-shadow: 1px 1px #000;
+      opacity: 0;
+      transform: translate(20px, 2px) scale(0.8);
+    }
+      
+    .parsley-error ~ & {
+      color: $color5;
+    }
+
+  }
+
+  & .parsley-errors-list {
+    display: none;
+    align-items: center;
+    top: 6px;
+    right: 6px;
+    bottom: 6px;
+    padding: 3px 10px;
+    text-align: left;
+    left: auto;
+    max-width: 36%;
+    overflow: hidden;
+    color: #fff;
+    background: $color5;
+    border-radius: 3px;
+  }    
+  &--label .parsley-errors-list {
+    @include rule(top, (xs: 38px, lg: 48px));
+  }
+  & .parsley-error ~ .parsley-errors-list {
+    display: flex;
+  }
+  
+}
 
 
 
@@ -141,7 +161,7 @@
     &:hover,
     &:active, 
     &:focus {
-      color: darken(#fff, 10);    
+      // color: darken(#fff, 10);    
     }
   
   

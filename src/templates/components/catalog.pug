@@ -38,21 +38,21 @@ mixin categorySlider()
 					+categoryItem('Велюр', 'img/content/category-1.jpg', 204, 240)
 
 
-mixin catalogNav()
+mixin catalogNav(type)
 	+b.catalog-nav&attributes(attributes)
 		+e.UL.list
-			+e.LI.item.js-catalog-nav-item-toggle
-				+e.A.link(href="#")
+			+e.LI.item(class=((type=="items" || type=="woman" || type=="level3" || type=="level4") ? 'is-open' : ''))
+				+e.A.link.js-catalog-nav-item-toggle(href="#")
 					+e.SPAN.icon.--woman
-						i.icon.icon-catalog-nav-woman
+						i.icon.icon-catalog-nav-woman-red
 					+e.SPAN.name Женская коллекция
 					+e.I.arrow
 				
 				+e.lv1-dropdown
 					+e.UL.lv1-list
 						+e.LI.lv1-item
-							+e.A.lv1-link(href="#") Плащевые ткани
-						+e.LI.lv1-item
+							+e.A.lv1-link(href="#" class=(type=="level3" ? 'is-current' : ''))  Плащевые ткани
+						+e.LI.lv1-item(class=(type=="level4" ? 'is-open' : ''))
 							+e.A.lv1-link(href="#") Пальтовые ткани
 
 							+e.lv2-dropdown
@@ -60,13 +60,45 @@ mixin catalogNav()
 									+e.LI.lv2-item
 										+e.A.lv2-link(href="#") 
 											+e.SPAN.lv2-mark »
-											+e.SPAN.lv2-name  Новинки
-									+e.LI.lv2-item
-										+e.A.lv2-link(href="#") 
+											+e.SPAN.lv2-name Новинки
+									+e.LI.lv2-item(class=(type=="items" ? 'is-open' : ''))
+										+e.A.lv2-link(href="#" class=(type=="level4" ? 'is-current' : ''))
 											+e.SPAN.lv2-mark »
-											+e.SPAN.lv2-name  Трикотаж
+											+e.SPAN.lv2-name Трикотаж									
+										
+										+e.lv3-dropdown
+											+e.UL.lv3-list
+												+e.LI.lv3-item
+													+e.A.lv3-link(href="#") 
+														+e.SPAN.lv3-mark »
+														+e.SPAN.lv3-name Вареная шерсть
+												+e.LI.lv3-item
+													+e.A.lv3-link(href="#") 
+														+e.SPAN.lv3-mark »
+														+e.SPAN.lv3-name Букле
+												+e.LI.lv3-item
+													+e.A.lv3-link(href="#") 
+														+e.SPAN.lv3-mark »
+														+e.SPAN.lv3-name Твид
+												+e.LI.lv3-item
+													+e.A.lv3-link(href="#") 
+														+e.SPAN.lv3-mark »
+														+e.SPAN.lv3-name Ворсовые
+												+e.LI.lv3-item
+													+e.A.lv3-link(href="#") 
+														+e.SPAN.lv3-mark »
+														+e.SPAN.lv3-name Клетка
+												+e.LI.lv3-item
+													+e.A.lv3-link(href="#" class=(type=="items" ? 'is-current' : '')) 
+														+e.SPAN.lv3-mark »
+														+e.SPAN.lv3-name Жаккард
+												+e.LI.lv3-item
+													+e.A.lv3-link(href="#") 
+														+e.SPAN.lv3-mark »
+														+e.SPAN.lv3-name Остальные
+
 									+e.LI.lv2-item
-										+e.A.lv2-link(href="#").is-current
+										+e.A.lv2-link(href="#")
 											+e.SPAN.lv2-mark »
 											+e.SPAN.lv2-name Ворсовые шерстяные
 									+e.LI.lv2-item
@@ -81,7 +113,7 @@ mixin catalogNav()
 						+e.LI.lv1-item
 							+e.A.lv1-link(href="#") Подкладочная ткань
 						+e.LI.lv1-item
-							+e.A.lv1-link(href="#").is-current Мех
+							+e.A.lv1-link(href="#") Мех
 						+e.LI.lv1-item
 							+e.A.lv1-link(href="#") Дубленка
 						+e.LI.lv1-item
@@ -89,10 +121,10 @@ mixin catalogNav()
 
 							
 
-			+e.LI.item.js-catalog-nav-item-toggle
-				+e.A.link(href="#")
+			+e.LI.item(class=(type=="man" ? 'is-open' : ''))
+				+e.A.link.js-catalog-nav-item-toggle(href="#")
 					+e.SPAN.icon.--man
-						i.icon.icon-catalog-nav-man
+						i.icon.icon-catalog-nav-man-red
 					+e.SPAN.name Мужская коллекция
 					+e.I.arrow
 				
@@ -111,10 +143,10 @@ mixin catalogNav()
 						+e.LI.lv1-item
 							+e.A.lv1-link(href="#") Для отделки
 
-			+e.LI.item.js-catalog-nav-item-toggle
-				+e.A.link(href="#")
+			+e.LI.item(class=(type=="accessories" ? 'is-open' : ''))
+				+e.A.link.js-catalog-nav-item-toggle(href="#")
 					+e.SPAN.icon.--accessories
-						i.icon.icon-catalog-nav-accessories
+						i.icon.icon-catalog-nav-accessories-red
 					+e.SPAN.name Фурнитура
 					+e.I.arrow
 				
@@ -176,4 +208,99 @@ mixin catalogListingItem(name, image, width, height)
 					+e.SPAN.props-value 100% вискоза
 
 
+mixin catalogListingCategory(type, name, image, width, height)
+	+b.A.listing-category(href="#")&attributes(attributes)
+		+e.SPAN.img-wrap(class="listing-category__img-wrap--"+type)
+			+e.SPAN.img-inner
+				+e.IMG.img(src=image alt=name width=width height=height class="listing-category__img--"+type)
+		+e.SPAN.main
+			+e.SPAN.title= name
 
+
+
+mixin item
+	+b.item
+		+e.row
+			+e.col-1
+				+e.big-slider
+					+e.big-slider-items.js-item-big-slider
+						+e.big-slider-item
+							+e.A.big-image(href="img/temp/item-big-0-zoom.jpg" data-fancybox="item-gallery" )
+								+e.IMG.big-image-img(src="img/temp/item-big-0.jpg" width=460 height=420)
+								//- +e.SPAN.big-image-zoom
+								//- 	+icon('zoom')
+
+						+e.big-slider-item
+							+e.A.big-image(href="http://placehold.jp/24/cccccc/ff0000/1020x840.jpg?text=1" data-fancybox="item-gallery" )
+								+e.IMG.big-image-img(src="http://placehold.jp/24/cccccc/ff0000/460x420.jpg?text=1" width=460 height=420)
+								//- +e.SPAN.big-image-zoom
+								//- 	+icon('zoom')
+
+						+e.big-slider-item
+							+e.A.big-image(href="http://placehold.jp/24/cccccc/ff0000/1020x840.jpg?text=2" data-fancybox="item-gallery" )
+								+e.IMG.big-image-img(src="http://placehold.jp/24/cccccc/ff0000/460x420.jpg?text=2" width=460 height=420)
+								//- +e.SPAN.big-image-zoom
+								//- 	+icon('zoom')
+
+			+e.col-2
+				+e.props
+					+e.SPAN.props-item
+						+e.SPAN.props-name Артикул:
+						+e.SPAN.props-value 12345678
+
+					+e.SPAN.props-item
+						+e.SPAN.props-name Цвет:
+						+e.SPAN.props-value
+							+e.SPAN.colors
+								+e.SPAN.color
+									+e.I.color-part(style="background:#dccf9d")
+								+e.SPAN.color
+									+e.I.color-part(style="background:#000000")
+								+e.SPAN.color
+									+e.I.color-part(style="background:#2b4860")
+								+e.SPAN.color
+									+e.I.color-part(style="background:#9b0112")
+								+e.SPAN.color
+									+e.I.color-part(style="background:#dccf9d")
+									+e.I.color-part(style="background:#2b4860")      
+
+					+e.SPAN.props-item
+						+e.SPAN.props-name Состав:
+						+e.SPAN.props-value 50% полиэстер, 50% хлопок
+
+				+e.button-wrap
+					+buttonRedL('Оставить заявку')(type="sumbit")
+
+				+e.small-slider
+					+e.small-slider-items.js-item-small-slider
+						+e.small-slider-item
+							+e.A.small-image
+								+e.IMG.small-image-img(src="img/temp/item-small-0.jpg" width=105  height=95)
+						+e.small-slider-item
+							+e.A.small-image
+								+e.IMG.small-image-img(src="img/temp/item-small-1.jpg" width=105  height=95)
+						+e.small-slider-item
+							+e.A.small-image
+								+e.IMG.small-image-img(src="img/temp/item-small-2.jpg" width=105  height=95)
+	
+				+e.controls
+					+e.controls-left
+						+buttonArrow('left', '--theme-red js-item-slider-prev')
+					+e.controls-right
+						+buttonArrow('right', '--theme-red js-item-slider-next')
+
+
+
+mixin pagination
+	+b.pagination&attributes(attributes)
+		+e.UL.list
+			li.previous.disabled
+				span «
+			li.current
+				a(href="#") 1
+			li
+				a(href="#") 2
+			li
+				a(href="#") 3
+			li.next
+				a(href="#") »

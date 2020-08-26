@@ -1,0 +1,191 @@
+mixin collectionSlider
+    +b.collection-slider
+        +e.items.js-collection-slider
+            +e.item
+                +e.A.item-img-wrap(href="img/temp/new-collection-0.jpg" data-fancybox="inf-collection" )
+                    +e.IMG.item-img(src="img/temp/new-collection-0.jpg" width=360 height=330)
+                    +e.SPAN.item-zoom
+                        +icon('zoom')
+            
+            +e.item
+                +e.A.item-img-wrap(href="img/temp/new-collection-0.jpg" data-fancybox="inf-collection" )
+                    +e.IMG.item-img(src="img/temp/new-collection-0.jpg" width=360 height=330)
+                    +e.SPAN.item-zoom
+                        +icon('zoom')
+            
+            +e.item
+                +e.A.item-img-wrap(href="img/temp/new-collection-0.jpg" data-fancybox="inf-collection" )
+                    +e.IMG.item-img(src="img/temp/new-collection-0.jpg" width=360 height=330)
+                    +e.SPAN.item-zoom
+                        +icon('zoom')
+        
+        +e.controls
+            +e.controls-left
+                +buttonArrow('left', '--theme-red js-collection-slider-prev')
+            +e.controls-right
+                +buttonArrow('right', '--theme-red js-collection-slider-next')
+
+
+mixin sectionInf
+    +b.SECTION.s-inf
+        +e.row.row
+            +e.col-1.col-12.col-lg-4
+                +e.box
+                    +e.box-title Новая коллекция
+                                        
+                    +e.box-main.--bb
+                        +e.slider
+                            +collectionSlider
+                              
+
+                    +e.box-bottom
+                        +e.A.box-link(href="#") Смотреть всю коллекцию »
+
+            +e.col-1.col-12.col-lg-4
+                +e.box
+                    +e.box-title О компании
+                                        
+                    +e.box-main.--bb
+                        +e.text.text
+                            p 
+                                b Мы являемся ключевым связующим звеном между идеей дизайнера верхней одежды и одеждой, которую вы производите. 
+                                |  течение многих лет наша компания поставляет на российский рынок ткани оптом из Китая и не только. 
+                            p Благодаря тому, что у нас есть свои представительства в каждой из стран-производителей, мы имеем возможность поставлять в Россию и СНГ качественные ткани при оптимальной цене. В течение многих лет наша компания поставляет на российский рынок ткани оптом из Китая и не только. 
+
+                    +e.box-bottom
+                        +e.A.box-link(href="#") Подробнее »
+
+            +e.col-1.col-12.col-lg-4
+                +e.box
+                    +e.box-title Статьи
+                    
+                    +e.box-main
+                        +e.box-articles                            
+                            +e.box-article
+                                +smallArticle(
+                                    'Как правильно выбрать ткань для мужской демисезонtной куртки: лучшие советы', 
+                                    'img/content/article-item-0.jpg', 
+                                    '360',
+                                    '270'
+                                )
+
+                            +e.box-article
+                                +smallArticle(
+                                    'Будь в тренде! Советы от стилистов на лето 2020', 
+                                    'img/content/article-item-1.jpg', 
+                                    '360',
+                                    '270'
+                                )
+
+                            +e.box-article
+                                +smallArticle(
+                                    'Многообразие тканей: какую выбрать именно вам под конкретные цели', 
+                                    'img/content/article-item-2.jpg', 
+                                    '360',
+                                    '270'
+                                )
+
+                    +e.box-bottom
+                        +e.A.box-link(href="#") Читать все статьи »
+
+
+mixin sectionWhyUs
+    +b.SECTION.s-why-us
+        +e.top
+            +dualTitle('h2', 'Почему', 'мы', '--theme-white-black')
+        
+        +e.text.text
+            p В течение многих лет наша компания поставляет на российский рынок ткани оптом из Китая и не только. Благодаря тому, что у нас есть свои представительства в каждой из стран-производителей, мы имеем возможность поставлять в Россию и СНГ качественные ткани при оптимальной цене. За годы работы мы усовершенствовали механизм поставок тканей и максимально оптимизировали все связанные с этим процессы. Благодаря этому мы можем поставить ткани в кротчайшие сроки, от 10 дней. За непродолжительный период нам уже доверяют сотни производителей, как надежному поставщику.
+            p Мы не только поставляем ткани, но и разрабатываем коллекцию, соблюдая текущий и будущий тренд в моде. К каждому клиенту мы подходим индивидуально, и профессионально решаем их задачи в кратчайшие сроки.
+            p Мы не только поставляем ткани, но и разрабатываем коллекцию, соблюдая текущий и будущий тренд в моде. К каждому клиенту мы подходим индивидуально, и профессионально решаем их задачи в кратчайшие сроки.В течение многих лет наша компания поставляет на российский рынок ткани оптом из Китая и не только. 
+            p Благодаря тому, что у нас есть свои представительства в каждой из стран-производителей, мы имеем возможность поставлять в Россию и СНГ качественные ткани при оптимальной цене. За годы работы мы усовершенствовали механизм поставок тканей и максимально оптимизировали все связанные с этим процессы. Благодаря этому мы можем поставить ткани в кротчайшие сроки, от 10 дней. За непродолжительный период нам уже доверяют сотни производителей, как надежному поставщику.
+
+mixin sectionUsefulInf
+    +b.SECTION.s-useful-inf
+        +e.top
+            +dualTitle('h2', 'Модные', 'тренды', '--theme-white-black')
+        
+        +e.items
+            +e.items-row.row
+                +e.items-col.col-12.col-lg-4
+                    +articleListingItem(
+                        'Как правильно выбрать ткань для мужской демисезонtной куртки: лучшие советы', 
+                        'img/content/article-item-0.jpg', 
+                        '360',
+                        '270'
+                    )
+
+                +e.items-col.col-12.col-lg-4
+                    +articleListingItem(
+                        'Будь в тренде! Советы от стилистов на лето 2020', 
+                        'img/content/article-item-1.jpg', 
+                        '360',
+                        '270'
+                    )
+
+                +e.items-col.col-12.col-lg-4
+                    +articleListingItem(
+                        'Многообразие тканей: какую выбрать именно вам под конкретные цели', 
+                        'img/content/article-item-2.jpg', 
+                        '360',
+                        '270'
+                    )
+
+
+mixin sectionOrder
+    +b.SECTION.s-order
+        +e.top
+            +dualTitle('h2', 'Оставьте ', 'заявку', '--theme-white-black')
+
+        +e.form
+            form.js-validate(action="#" autocomplete="off")
+                // add class "is-form-sent" after sent form
+                +e.form-main
+                    +e.text-1.text
+                        p
+                            b Не теряйте время в поисках, 
+                            | просто оставьте заявку и мы поможем вам в выборе!
+                    +e.form-row.row
+                        +e.form-col.--field.col-12.col-lg-4
+                            label.input-text
+                                input.input-text__field(type="text" name="Name")
+                                span.input-text__placeholder Ваше имя
+
+                        +e.form-col.--field.col-12.col-lg-4
+                            label.input-text
+                                input.input-text__field(type="tel" name="tel" required="" data-parsley-ru-phone)
+                                span.input-text__placeholder 
+                                    | Телефон 
+                                    i.imp-sign *
+
+                        +e.form-col.--submit.col-12.col-lg-4
+                            +buttonRedL('Отправить', 'button')(type="submit")
+
+                        +e.form-col.--agree.col-12.col-lg-4
+                            +e.form-agree
+                                span.checkbox-wrap
+                                    label.checkbox
+                                        input.checkbox__input(type="checkbox" name="Согласие на обработку данных" value="Да" checked="" required="" data-parsley-error-message="Нужно согласие на обработку данных" data-parsley-multiple="Согласие на обработку данных")
+                                        i.checkbox__icon
+                                        span.checkbox__text
+                                            | Принимаю 
+                                            a(href="#").link.link--theme-red политику конфиденциальности
+
+                        +e.form-col.col-12.col-lg-4
+                            +e.SPAN.form-required-mesage
+                                i.imp-sign * 
+                                | — обязательно для заполнения
+
+                +e.form-succeed
+                    +e.form-succeed-icon
+                        +icon('round-check-mark')
+                    
+                    +e.form-succeed-middle
+                        +e.form-succeed-title Ваша заявка принята!
+
+                        +e.form-succeed-text.text
+                            b Наш менеджер перезвонит вам 
+                            | в самое ближайшее время
+
+                    +e.form-succeed-button
+                        +buttonRedL('Вернуться к форме', 'button')(type="button").js-form-resset

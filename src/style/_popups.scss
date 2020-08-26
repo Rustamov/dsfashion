@@ -1,0 +1,132 @@
+.fancybox-is-open .fancybox-bg {
+  opacity: 0.5;
+}
+.fancybox-slide--html .fancybox-close-small {
+  padding: 15px;
+  width: 60px;
+  height: 60px;
+
+  @include hover {
+      color: #ffffff;
+  }
+}
+.popup {
+  display: none;
+  width: auto;
+  padding: 30px 20px;
+  overflow: visible;
+  color: #0e0e0e;
+  border-radius: 3px;
+  background: linear-gradient(
+    90deg,
+    rgb(166, 102, 28) 0%,
+    rgb(197, 137, 50) 15%,
+    rgb(242, 184, 72) 50%,
+    rgb(197, 137, 50) 85%,
+    rgb(166, 102, 28) 100%
+  );
+  box-shadow: 0px 13px 46px 0px rgba(0, 0, 0, 0.15);
+
+  @include screen("sm") {
+    width: 480px;
+    padding: 60px;
+  }
+
+  &__form {
+    position: relative;
+  }
+
+  &__form-main {
+    .is-form-sent & {
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+      transition: 0.3s;
+    }
+  }
+
+  &__title {
+    display: block;
+    margin: 0 0 25px;
+    text-align: center;
+  }
+
+  &__text {
+    display: block;
+    margin: 0 0 20px;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  &__fields {
+    margin: 0 0 23px;
+
+    &-item {
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  &__form-required-mesage {
+    margin: 0 0 20px;
+    font-size: 12px;
+  }
+  &__form-agree {
+    margin: 0 0 30px;
+  }
+  &__submit {
+    text-align: center;
+  }
+
+  &__succeed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    width: 110%;
+    left: -5%;
+    top: 50%;
+    opacity: 0;
+    transform: translateY(0);
+    pointer-events: none;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1;
+    
+    .is-form-sent & {
+      opacity: 1;
+      transform: translateY(-50%);
+      pointer-events: visible;
+    }
+
+    &-icon {
+      margin: 0 0 36px;
+
+      .svg-icon {
+        width: 60px;
+        height: 60px;
+        color: $color5;
+
+        @include screen('lg') {
+            width: 109px;
+            height: 109px;
+        }
+      }
+    }
+
+    &-title {
+        margin: 0 0 24px;
+    }
+    &-text {
+        margin: 0 0 34px;
+        font-size: 16px;
+    }
+
+  }
+}

@@ -8,10 +8,13 @@
 @import '_form';
 @import '_header';
 @import '_footer';
+@import '_popups';
 @import '_catatlog';
 @import '_articles';
 @import '_main-page';
+@import '_sections';
 @import '_breadcrumbs';
+@import '_pages';
 
 @include sprites($spritesheet-sprites); //if icons empty will throw error
 
@@ -26,16 +29,23 @@ body {
   line-height: 1.15;
   color: #000;
   background: $color2 linear-gradient(to right, 
-    #7f3e0a 0%,
-    #ad7118 20%,
+    #994f14 0%,
+    #ad7118 10%,
     #f2b848 50%,
-    #ad7118 80%,
-    #7f3e0a 100%);
+    #ad7118 90%,
+    #994f14 100%);
 
-  // background: $color2  url(../img/body-bg.jpg) 50% 50%;
-  // background-size: cover;
   min-height: 100vh;
-  // overflow-y: hidden;
+  
+  @include screen ('xl') {
+    background: $color2 linear-gradient(to right, 
+      #7f3e0a 0%,
+      #ad7118 20%,
+      #f2b848 50%,
+      #ad7118 80%,
+      #7f3e0a 100%);
+  }
+
 
   &::before {
     content: '';
@@ -43,11 +53,17 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 1143px;
+    @include rule(height, (xs: 840px, lg: 1143px));
     max-height: 100%;
-    background: url(../img/body-bg-top.png) 50% 0px no-repeat;
-    background-size: 100vw 1143px
+    @include rule(background-image, (xs: url(../img/body-bg-top-xs.png), sm: url(../img/body-bg-top-md.png), xl: url(../img/body-bg-top.png) ));
+    background-repeat: no-repeat;
+    background-position: 50% 0px;
+    @include rule(background-size, (xs: 100vw 840px, lg: 100vw 1143px));
   }
+  &.body--bg-top-small::before {
+    @include rule(top, (xs: -446px, lg: -566px));
+  }
+
 
   &::after {
     content: '';
@@ -55,13 +71,16 @@ body {
     right: 0;
     bottom: 0;
     width: 100%;
-    height: 935px;
+    @include rule(height, (xs: 2200px, lg: 935px));
     max-height: 100%;
-    background: url(../img/body-bg-bottom.png) 50% 100% no-repeat;
-    background-size: 100vw 935px
+    @include rule(background-image, (xs: url(../img/body-bg-bottom-xs.png), sm: url(../img/body-bg-bottom-md.png), xl: url(../img/body-bg-bottom.png) ));
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    @include rule(background-size, (xs: cover, lg: 100vw 935px));
   }
 
 }
+
 
 .wrapper {
   position: relative;
@@ -76,5 +95,14 @@ body {
 }
 
 .main {
-  padding: 100px 0;
+  // padding: 100px 0;
+
+  @include rule(padding, (xs: 50px 0 60px, lg: 100px 0));
+
+  &--pt-40 {
+    padding-top: 40px;
+    @include rule(padding-top, (xs: 25px, lg: 40px));
+
+  }
 }
+

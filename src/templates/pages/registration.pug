@@ -1,0 +1,87 @@
+extends ../layouts/default
+include ../helpers/mixins
+
+block variables
+	- const title = "registration"
+	- const bodyClass = "body--bg-top-small"
+
+block content
+	main.main.main--pt-40
+		+b.p-def
+			.container
+				.breadcrumbs-block
+					+breadcrumbs([], 'Авторизация и регистрация')
+
+				+b.page-title
+					+e.H1.__text Регистрация
+					+e.A.__link(href="authorization.html") Авторизация
+
+				+b.SECTION.register
+
+					
+					+e.form
+						form.js-validate(action="#" autocomplete="off")
+							+e.form-row.row
+								+e.form-col.--field.col-12.col-lg-4
+									label.input-text.input-text--label
+										span.input-text__label 
+											| Имя 
+											i.imp-sign *
+										input.input-text__field(type="text" name="Name" required="")
+
+								+e.form-col.--field.col-12.col-lg-4
+									label.input-text.input-text--label
+										span.input-text__label 
+											| E-mail  
+										input.input-text__field(type="email" name="email")
+
+								+e.form-col.--field.col-12.col-lg-4
+									label.input-text.input-text--label
+										span.input-text__label 
+											| Телефон 
+											i.imp-sign *
+										input.input-text__field(type="tel" name="tel" required="")
+
+								+e.form-col.--field.col-12.col-lg-4
+									label.input-text.input-text--label
+										span.input-text__label 
+											| Бренд 
+											i.imp-sign *
+										input.input-text__field(type="text" name="org" required="")
+
+								+e.form-col.--field.col-12.col-lg-5
+									label.input-text.input-text--label
+										span.input-text__label 
+											| Сайт 
+										input.input-text__field(type="text" name="site")
+
+								+e.form-col.--field.col-12.col-lg-3
+									label.input-text.input-text--label
+										span.input-text__label 
+											| ИНН 
+										input.input-text__field(type="text" name="inn")
+
+
+								+e.form-col.--agree.col-12.col-lg-4
+									+e.form-agree
+										span.checkbox-wrap
+											label.checkbox
+												input.checkbox__input(type="checkbox" name="Согласие на обработку данных" value="Да" checked="" required="" data-parsley-error-message="Нужно согласие на обработку данных" data-parsley-multiple="Согласие на обработку данных")
+												i.checkbox__icon
+												span.checkbox__text
+													| Принимаю 
+													a(href="#").link.link--theme-red политику конфиденциальности
+
+								+e.form-col.col-12.col-lg-4.col-xl-5
+									+e.SPAN.form-required-mesage
+										i.imp-sign * 
+										| — обязательно для заполнения
+			
+								+e.form-col.--submit.col-12.col-lg-4.col-xl-3
+									+buttonRedL('Зарегистрироваться', 'button', 'l')(type="submit")
+
+										
+
+				+sectionInf()
+
+				+sectionWhyUs()
