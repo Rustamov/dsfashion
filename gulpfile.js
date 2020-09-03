@@ -57,6 +57,7 @@ var path = {
             'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js',
             'node_modules/object-fit-images/dist/ofi.min.js',
             'node_modules/magnify/dist/js/jquery.magnify.js',
+            'node_modules/sticky-kit/dist/sticky-kit.min.js',
             // 'node_modules/jquery-zoom/jquery.zoom.min.js',
             //'node_modules/wowjs/dist/wow.min.js',
             //'node_modules/magnific-popup/dist/jquery.magnific-popup.min.js',

@@ -13,15 +13,52 @@ block content
 					+breadcrumbs(['Каталог', 'Женская коллекция', 'Пальтовые ткани', 'Трикотаж', 'Жаккард'], '15876')
 
 				+e.SECTION.card
-					.row
+					.row.js-sticky-parent
 						+e.card-col-nav.col-12.col-lg-3
-							+catalogNav('')
+							+catalogNav('').js-sticky-element
 						+e.card-col-item.col-12.col-lg-9
 							+e.H1.title 15876
 
-							+item 
+							+e.item
+								+item 
 
-						+e.card-col-descr.col-12
+							+b.accompanying-items&attributes(attributes)
+								+e.top
+									+e.top-row.row
+										+e.top-col-title.col-auto
+											+e.H2.title Сопутствующие товары
+											
+										+e.top-col-controls.col-auto
+											+e.controls
+												+e.controls-left
+													+buttonArrow('left', '--theme-red js-items-slider-prev')
+												+e.controls-right
+													+buttonArrow('right', '--theme-red js-items-slider-next')
+
+								+e.slider-wrap
+									+e.slider.js-items-slider
+										
+										+e.slider-item
+											+catalogListingItemSimplified('168133', 'img/content/catalog-item-0.jpg')
+
+										+e.slider-item
+											+catalogListingItemSimplified('15876', 'img/content/catalog-item-1.jpg')
+
+										+e.slider-item
+											+catalogListingItemSimplified('15865', 'img/content/catalog-item-2.jpg')
+
+										+e.slider-item
+											+catalogListingItemSimplified('168126', 'img/content/catalog-item-3.jpg')
+
+										+e.slider-item
+											+catalogListingItemSimplified('15876', 'img/content/catalog-item-1.jpg')
+
+										+e.slider-item
+											+catalogListingItemSimplified('15865', 'img/content/catalog-item-2.jpg')
+
+										+e.slider-item
+											+catalogListingItemSimplified('168126', 'img/content/catalog-item-3.jpg')
+									
 							+e.card-descr
 								+e.card-title Описание
 
@@ -33,44 +70,7 @@ block content
 
 
 				
-				+b.SECTION.s-items
-					+b.items-block&attributes(attributes)
-						+e.top
-							+e.top-row.row
-								+e.top-col-title.col-auto
-									+dualTitle('h2', 'Сопутствующие', 'товары', '--theme-white-black')
-									
-								+e.top-col-controls.col-auto
-									+e.controls
-										+e.controls-left
-											+buttonArrow('left', '--theme-red js-items-slider-prev')
-										+e.controls-right
-											+buttonArrow('right', '--theme-red js-items-slider-next')
-
-						+e.slider-wrap
-							+e.slider.js-items-slider
-								
-								+e.slider-item
-									+catalogListingItem('168133', 'img/content/catalog-item-0.jpg')
-
-								+e.slider-item
-									+catalogListingItem('15876', 'img/content/catalog-item-1.jpg')
-
-								+e.slider-item
-									+catalogListingItem('15865', 'img/content/catalog-item-2.jpg')
-
-								+e.slider-item
-									+catalogListingItem('168126', 'img/content/catalog-item-3.jpg')
-
-								+e.slider-item
-									+catalogListingItem('15876', 'img/content/catalog-item-1.jpg')
-
-								+e.slider-item
-									+catalogListingItem('15865', 'img/content/catalog-item-2.jpg')
-
-								+e.slider-item
-									+catalogListingItem('168126', 'img/content/catalog-item-3.jpg')
-								
+					
 				
 				+b.SECTION.s-items
 					+b.items-block&attributes(attributes)

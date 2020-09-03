@@ -471,8 +471,7 @@
         min-width: 170px;
     }
     &__top {
-        padding: 45px 0;
-        @include rule(padding, (xs: 20px 0, lg: 45px 0));
+        @include rule(padding, (xs: 20px 0, lg: 42px 0));
 
         &-row {
             justify-content: space-between;

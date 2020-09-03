@@ -24,6 +24,8 @@ $(document).ready(function () {
     item();
     othersScript();
     map();
+    stickScript();
+
 
     function mobileMenu () {
         let mobileNav = $('.mobile-menu'),
@@ -371,6 +373,55 @@ $(document).ready(function () {
                 ]
             }); 
         });
+
+        $('.accompanying-items').each(function() {
+            let wrap = $(this),
+                slider = wrap.find('.js-items-slider'),
+                nextBtn = wrap.find('.js-items-slider-next'),
+                prevBtn = wrap.find('.js-items-slider-prev');
+
+            slider.slick({
+                // centerMode: true,
+                // variableWidth: true,
+                infinite: false,
+                adaptiveHeight: false,
+                nextArrow: nextBtn,
+                prevArrow: prevBtn,
+                slidesToShow: 6,
+                slidesToScroll: 6,
+                responsive: [
+                    {
+                        breakpoint: window.globalOptions.sizes.lg,
+                        settings: {
+                            slidesToShow: 6,
+                            slidesToScroll: 6,
+                        }
+                    },
+                    {
+                        breakpoint: window.globalOptions.sizes.md,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 4,
+                        }
+                    },
+                    {
+                        breakpoint: window.globalOptions.sizes.sm,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                        }
+                    }
+                    // ,
+                    // {
+                    //     breakpoint: window.globalOptions.sizes.xs,
+                    //     settings: {
+                    //         slidesToShow: 1,
+                    //         slidesToScroll: 1,
+                    //     }
+                    // }
+                ]
+            }); 
+        });
         
 
         if ( $('.js-collection-slider').length > 0 ) {
@@ -457,8 +508,54 @@ $(document).ready(function () {
         }
       
 
-      };
-      
+    };
+
+
+    function stickScript() {
+        let stickOffset = 20,
+            stikyTimeout = 0,
+            $window = $(window);
+
+        stickElements();
+
+        $window.on('resize', function() {
+            
+            if (stikyTimeout) {
+                clearTimeout(stikyTimeout);
+            }
+
+            stikyTimeout = setTimeout(function() {
+                detachStickElements();
+                stickElements();
+            }, 500);
+
+        });
+
+
+        function stickElements() {
+            if ($(window).width() > window.globalOptions.sizes.md) {
+                $('.js-sticky-element').stick_in_parent({
+                    parent: $('.js-sticky-parent'),
+                    offset_top: stickOffset
+                    //     // recalc_every: 1,
+                });
+
+            }
+        };
+
+        function detachStickElements() {
+            try {
+                $('.js-sticky-element').trigger("sticky_kit:detach");
+            } catch (e) {
+                console.error(e);
+            };
+
+        };
+
+
+
+    };
+        
 
 
 });

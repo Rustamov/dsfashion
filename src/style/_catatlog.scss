@@ -176,6 +176,68 @@
     }
 }
 
+
+.accompanying-items {
+    $b: &;
+
+    margin: 0 0 15px;
+    
+    &__title {
+        @extend .title-2;
+        display: block;
+        margin: 0;
+        color: #fff;
+    }
+    &__top {
+        @include rule(margin-bottom, (xs: 30px, lg: 35px));
+        
+        &-row {
+            flex-wrap: nowrap;
+            align-items: center;
+            @include rule(flex-direction, (xs: column, md: row));
+            @include rule(justify-content, (xs: center, md: space-between));
+        }
+
+        &-col-title {
+            @include rule(margin-bottom, (xs: 20px, md: 0px));
+        }
+    }
+
+    &__controls {
+        display: flex;
+        align-items: center;
+
+        &-right {
+            margin-left: 10px;
+        }
+    }
+
+    &__slider {
+        
+        @include screen(xs) {
+            @include rule(margin, (xs: 0 -40px 0, lg: 0 -45px 0)); //by don`t cut image shadow
+            // border: 1px solid #000;
+            .slick-list {
+                padding: 0 30px;
+            }
+        }
+        .slick-track {
+            // padding-bottom: 40px;
+        }
+        
+        &-item {
+            text-align: center;
+            @include rule(padding, (xs: 0 10px 30px, lg: 0 15px 40px));
+            transition: opacity 0.3s;
+            &:not(.slick-slide):not(:first-child) {
+                display: none;
+            }
+            &:not(.slick-active) {
+                opacity: 0;
+            }
+        }
+    }
+}
 .catalog-nav {
     $b: &;
     &__list {
@@ -526,6 +588,87 @@
 
         &-part {
             flex-grow: 1;
+        }
+
+    }
+
+}
+
+
+.catalog-item-simpl {
+    $b: &;
+   
+    @extend .link-resset;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    max-width: 265px;
+    margin: 0;
+    padding: 0;
+    color: #000;
+    text-align: left;
+    border-radius: 3px;
+    box-shadow: 0px 12px 29px 0px rgba(88, 43, 0, 0.17);
+    transition: color 0.2s,  box-shadow 0.2s;
+    
+    @include hover {
+        color: #000;
+        box-shadow: 0px 12px 29px 0px rgba(88, 43, 0, 0.27);
+    }
+
+   
+
+    &__img {
+        &-wrap {
+            position: relative;
+            display: block;
+            width: 100%;
+            // @include rule(height, (xs: 180px, lg: 240px));
+            min-height: 80px;
+            margin: 0;
+            overflow: hidden;
+            border-radius: 3px;
+            &::before {
+                content: '';
+                display: block;
+                padding-top: 91.7%;
+            }
+        }
+
+        @include fill-img;
+        transition: transform 0.3s;
+        transform: scale(1);
+
+        @include hoverParent($b) {
+            transform: scale(1.05);
+        }
+
+    }
+
+    &__main {
+        display: block;
+        @include rule(padding, (xs: 8px 5px, sm: 12px 10px));
+    }
+    
+
+
+    &__props {
+        display: block;
+        @include rule(font-size, (xs: 10px, sm: 11px,));
+        
+        &-item {
+            display: flex;
+            align-items: center;
+
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+        }
+
+        &-name {
+            // @include rule(min-width, (xs: 50px, lg: 60px));
+            margin-right: 4px;
+            font-weight: 700;
         }
 
     }
@@ -945,6 +1088,10 @@
         margin: 0 0 40px;
         color: #fff;
     }
+
+    &__item {
+        margin: 0 0 55px;
+    }
     
     &__card {
         @extend .border-dashed-red;
@@ -963,23 +1110,23 @@
         &-col {
             &-nav {
                 @include rule(order, (xs: 3, lg: 1));
-                @include rule(margin-bottom, (xs: 0, lg: 40px));
+                @include rule(margin-bottom, (xs: 0, lg: 0));
 
             }
             &-item {
                 @include rule(order, (xs: 1, lg: 2));
-                @include rule(margin-bottom, (xs: 35px, lg: 40px));
-            }
-            &-descr {
-                @include rule(order, (xs: 2, lg: 3));
                 @include rule(margin-bottom, (xs: 35px, lg: 0));
             }
+            // &-descr {
+            //     @include rule(order, (xs: 2, lg: 3));
+            //     @include rule(margin-bottom, (xs: 35px, lg: 0));
+            // }
         }
 
         &-title {
-            @extend .title;
+            @extend .title-2;
             display: block;
-            margin: 0 0 40px;
+            margin: 0 0 30px;
             color: #fff;
         }
     }

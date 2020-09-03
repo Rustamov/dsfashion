@@ -207,6 +207,17 @@ mixin catalogListingItem(name, image, width, height)
 					+e.SPAN.props-name Состав:
 					+e.SPAN.props-value 100% вискоза
 
+mixin catalogListingItemSimplified(name, image, width, height)
+	+b.A.catalog-item-simpl(href="#")&attributes(attributes)
+		+e.SPAN.img-wrap
+			+e.IMG.img(src=image alt=name width=115 height=105)
+		+e.SPAN.main
+			+e.SPAN.props
+				+e.SPAN.props-item
+					+e.SPAN.props-name Арт.:
+					+e.SPAN.props-value 12345678
+
+
 
 mixin catalogListingCategory(type, name, image, width, height)
 	+b.A.listing-category(href="#")&attributes(attributes)
@@ -269,7 +280,8 @@ mixin item
 						+e.SPAN.props-value 50% полиэстер, 50% хлопок
 
 				+e.button-wrap
-					+buttonRedL('Оставить заявку')(type="sumbit")
+					+buttonRedL('Оставить заявку', 'a').header__order-btn.js-popup(href="#popup-order")
+
 
 				+e.small-slider
 					+e.small-slider-items.js-item-small-slider
