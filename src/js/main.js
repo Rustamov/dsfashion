@@ -62,8 +62,8 @@ $(document).ready(function () {
 
 
             if (!mobileNavIsOpen) {
-                window.globalOptions.freeze(true); //true is scroll to top page
-                $body.toggleClass(openClass, true);
+                window.globalOptions.freeze(true); //true is scroll to top page 
+                $body.toggleClass(openClass, true); // aa
             }
         
             if ( timeout ) {
